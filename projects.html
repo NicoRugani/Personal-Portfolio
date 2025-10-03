@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/nav.css">
-    <link rel="icon" href="img/logo.png" type="image/icon type">
-    <title>Nicholas Rugani | Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Nicholas Rugani</title>
+  <link rel="stylesheet" href="CSS/nav.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
 </head>
 <body>
-    <nav>
+  <nav>
         <ul>
             <li><a href = "index.html">Home</a></li>
             <li><a class = "active" href = "projects.html">Projects</a></li>
@@ -18,9 +17,30 @@
             <li><a href = "contact.html">Contact</a></li>
         </ul>
     </nav>
-
-    
-
-
+  <main class="wrapper section">
+    <h1>Projects</h1>
+    <section class="projects grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+      <article class="card stack">
+        <h3>Emoji Translator (Java)</h3>
+        <p>HashMap-based emoji-code → emoji converter. Focus: clean maps, user I/O.</p>
+        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+      </article>
+      <article class="card stack">
+        <h3>Circular Linked List Battle Simulator (Java)</h3>
+        <p>Data structures + simple game loop; refactored into multiple classes.</p>
+        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+      </article>
+      <article class="card stack">
+        <h3>Akinator-style BST (Java)</h3>
+        <p>Binary tree with persistent storage; learns new nodes across runs.</p>
+        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+      </article>
+      <article class="card stack">
+        <h3>Epic Outdoors Website</h3>
+        <p>Static site (HTML/CSS/JS) showcasing outdoor content; focus on UX and layout.</p>
+        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+      </article>
+    </section>
+  </main>
 </body>
 </html>

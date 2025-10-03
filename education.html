@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicholas Rugani | Education</title>
-    <link rel="stylesheet" href="CSS/nav.css">
-    <link rel="stylesheet" href = "CSS/education.css">
-    <link rel = "stylesheet" href = "CSS/main.css">
-    <link rel="icon" href="img/logo.png" type="image/icon type">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Education — Nicholas Rugani</title>
+  <link rel="stylesheet" href="CSS/nav.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/education.css" />
 </head>
 <body>
-    <nav>
+  <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -20,39 +18,48 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+  <div class="progress-container"><div class="progress-bar"></div></div>
+  <main class="wrapper section stack">
 
-    <div class="progress-container">
-        <div class="progress-bar"></div>
-    </div>
 
-    <div class="space slide-in">
-        <img class="pwest" src="img/file (1).png" alt="highschool logo" width="600">
-        <div class="pwestText">
-            <h2 style="color: #5192ce;">Parkway West High School</h2>
-            <p>I went to high school At Parkway West High School in Chesterfeild MO. I graduated in 2024.</p>
-        </div>
-    </div>
-    
-    <div class="space slide-in-right">
-        <img class="pwest" src="img/st.png" alt="highschool logo" width="500">
-        <div class="pwestText">
-            <div style="width:70%; margin-left:25%;">
-                <h2 style="color: #b20838;">South Tech High School</h2>
-                <p>For my last two years of high school I went to South tech alongside Pwest in a program called web and computer programming.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="space slide-in">
-        <img class="pwest" src="img/msu.png" alt="college logo" width="600">
-        <div class="pwestText">
-            <h2 style="color: #00205B;">Montana State University</h2>
-            <p>I am currently going to Montna State Univerty and studying a BA of Arts in computer science.</p>
-        </div>
-    </div>
-    
-    <!--<script src="JavaScript/progressbar.js"></script> -->
-    <script src = "JavaScript/slide.js"></script>
+      <section class="edu-block grid grid-2">
+          <img class="pwest" src="img/msu.png" alt="Montana State University logo">
+          <div class="pwestText stack">
+              <h2>Montana State University</h2>
+              <p>B.A. in Computer Science (in progress).</p>
+          </div>
+      </section>
 
+      <section class="edu-block grid grid-2">
+      <img class="pwest" src="img/file (1).png" alt="Parkway West logo">
+      <div class="pwestText stack">
+        <h2>Parkway West High School</h2>
+        <p>Graduated 2024 — Chesterfield, MO.</p>
+      </div>
+    </section>
+
+    <section class="edu-block grid grid-2">
+      <img class="pwest" src="img/st.png" alt="South Tech logo">
+      <div class="pwestText stack">
+        <h2>South Tech High School</h2>
+        <p>Web & Computer Programming alongside PWest (junior & senior years).</p>
+      </div>
+    </section>
+
+
+
+  </main>
+  <script>
+    // simple scroll progress for the fixed bar
+    const bar = document.querySelector('.progress-bar');
+    function onScroll(){
+      const el = document.documentElement;
+      const h = el.scrollHeight - el.clientHeight;
+      const pct = Math.max(0, Math.min(1, (window.scrollY||el.scrollTop)/h));
+      bar.style.height = (pct*100).toFixed(1) + '%';
+    }
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  </script>
 </body>
 </html>

@@ -1,87 +1,25 @@
-/* Universal box-sizing */
-* {
-    box-sizing: border-box; /* Ensures padding and borders are included in the width/height */
-}
+/* ===== about.css (updated) ===== */
 
-.centered-box {
-    margin: 0 auto; /* Centers the box horizontally */
-    width: 50%;           /* The width of the content box */
-    height: 15%;          /* The height of the content box */
-    padding-top: 3%; /* Padding inside the box */
-    justify-content: center;
-}
-.centered-box p{
-    display: inline;
-}
+/* Use global tokens/typography from main.css */
 
-.box {
-    width: 60%;           /* The width of the content box */
-    height: auto;          /* Auto adjusts the height based on content */
-    padding: 1%;          /* Padding inside the box */
-    margin: 1%; /* Margin outside the box */
-}
-.box p{
-    display: inline;
-}
-/* Flexbox layout for certification section */
-#certifications {
-    margin:8% 3%;
-    width: 75%;
-    display: flex;         /* Enables flexbox */
-    align-items: center;   /* Centers the content vertically */
-    justify-content: flex-start; /* Aligns content to the left */
-}
+.centered-box, .box{ width: auto; height: auto; margin: 0; padding: 0; }
 
-#certification {
-    margin-right: 20px; /* Space between image and text */
-    width: 300px; /* Adjust the image size */
-}
+/* Certifications area uses .grid grid-2 from HTML; no floats/abs pos */
+#certifications{ display: contents; }
 
-#certificationText {
-    flex-grow: 1;  /* Makes the text section take up the remaining space */
-}
+#certification{ width: min(320px, 100%); margin: 0 auto; }
 
-#certificationText li {
-    font-size: 1.5em;
-    color: #5b3629;
-}
+#certificationText li,
+#certificationText p{ font-size: 1.125rem; color: #5b3629; }
+#certificationText h2{ font-size: clamp(1.5rem, 2.8vw, 2.25rem); color: #a37cf0; }
 
-#certificationText p {
-    color: #5b3629;
-    font-size: 1.5em;
-}
+#intro p{ padding-top: .5rem; color:#5b3629; font-size: 1.125rem; }
+#intro h1{ text-align:left; }
 
-#certificationText h2 {
-    font-size: 3em;
-    color: #a37cf0;
-}
-
-#intro p {
-    padding-top: 1%;
-    color: #5b3629;
-    font-size: 1.5em;
-    line-height: 1.5;
-}
-
-#intro h1 {
-    color: #a37cf0;
-    font-size: 3em;
-    text-align: center;
-    justify-content: center;
-}
-
+/* Remove absolute positioning that caused overlap */
 #about-me{
-    position: absolute;
-    width:40%;
-    left:55%;
-    bottom:31%;
+  position: static;
+  width: auto; left:auto; bottom:auto;
 }
-
-#about-me h2{
-    color: #a37cf0;;
-    font-size: 3em;
-}
-#about-me p{
-    color: #5b3629;
-    font-size: 1.5em;
-}
+#about-me h2{ font-size: clamp(1.5rem, 2.8vw, 2.25rem); color:#a37cf0; }
+#about-me p{ font-size: 1.125rem; color:#5b3629; }

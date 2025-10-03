@@ -4,7 +4,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1;
-    background-color: white; /* Add background color to nav for better visibility */
+    /* Add background color to nav for better visibility */
 }
 
 nav ul {
@@ -29,6 +29,9 @@ nav li a {
 
 nav li a:hover {
     color: #a37cf0;
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none;
+    transform: scale(1.3);
 }
 
 nav .active {
