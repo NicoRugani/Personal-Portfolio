@@ -3,8 +3,20 @@
 /* Rely on main.css for layout; only keep page-specific styles here */
 
 .hero-media img{
-  border-radius: 12px;
+  border-radius: 15px;
   box-shadow: 5px 5px 10px #918983;
+}
+.hero{
+  align-items: center;
+  gap: 2rem;
+}
+.hero-media{
+  justify-self: center;
+}
+.hero-media img{
+  width: clamp(300px, 40vw, 500px);
+  max-width: 100%;
+  border-radius: 15px;
 }
 
 h1{

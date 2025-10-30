@@ -7,9 +7,13 @@
   <link rel="stylesheet" href="CSS/nav.css" />
   <link rel="stylesheet" href="CSS/main.css" />
   <link rel="stylesheet" href="CSS/about.css" />
+  <link rel="script" href="JavaScript/general.js">
 </head>
 <body>
   <nav>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
         <ul>
             <li><a href = "index.html">Home</a></li>
             <li><a href = "projects.html">Projects</a></li>
@@ -25,7 +29,7 @@
     </section>
 
     <section id="certifications" class="grid grid-2">
-      <div>
+      <div id="aboutImgDiv">
         <img id="certification" src="img/certificationLogo.png" alt="Certifications logo">
       </div>
       <div id="certificationText" class="stack">

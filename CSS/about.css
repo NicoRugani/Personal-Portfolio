@@ -5,7 +5,10 @@
 .centered-box, .box{ width: auto; height: auto; margin: 0; padding: 0; }
 
 /* Certifications area uses .grid grid-2 from HTML; no floats/abs pos */
-#certifications{ display: contents; }
+#certifications{
+   display: grid;
+   gap : 1.5rem; 
+}
 
 #certification{ width: min(320px, 100%); margin: 0 auto; }
 
@@ -23,3 +26,30 @@
 }
 #about-me h2{ font-size: clamp(1.5rem, 2.8vw, 2.25rem); color:#a37cf0; }
 #about-me p{ font-size: 1.125rem; color:#5b3629; }
+#aboutImgDiv{
+  margin: 0;
+}
+
+@media (min-width: 900px){
+  #certifications{
+    grid-template-columns: 1fr minmax(0, 320px);
+    align-items: start;
+    gap: 2rem;
+  }
+  #aboutImgDiv{
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
+    grid-row: 1 
+  }
+  #certificationText{
+    grid-column: 1;
+  }
+  #certification{
+    margin: 0;
+  }
+}
+
+
+
+

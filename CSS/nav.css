@@ -46,3 +46,54 @@ nav #name {
     padding: 14px 16px;
     text-decoration: none;
 }
+
+.nav-toggle{
+    display: none;
+    background:none;
+    border:0;
+    padding:12px;
+    cursor:pointer;
+}
+.nav-toggle span{
+    display:block;
+    width:25px;
+    height:3px;
+    margin-bottom:5px;
+    background:#5b3629;
+    border-radius:2px;
+}
+
+@meadia(max-wdith: 760px){
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    nav ul{
+        position: absolute;
+        top: 100%;
+        right: 24px;
+        left:24 px;
+        display: none; 
+        flex-direction: column;
+        gap:0;
+        padding:12px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    nav ul.show{
+    display:flex;
+  }
+  nav li{
+    font-size:20px;
+  }
+  nav li a{
+    padding:10px;
+  }
+  .nav-toggle{
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+}
