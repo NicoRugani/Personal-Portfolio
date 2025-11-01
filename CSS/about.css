@@ -14,7 +14,7 @@
 
 #certificationText li,
 #certificationText p{ font-size: 1.125rem; color: #5b3629; }
-#certificationText h2{ font-size: clamp(1.5rem, 2.8vw, 2.25rem); color: #a37cf0; }
+#certificationText h2{ color: #a37cf0; }
 
 #intro p{ padding-top: .5rem; color:#5b3629; font-size: 1.125rem; }
 #intro h1{ text-align:left; }
@@ -24,9 +24,10 @@
   position: static;
   width: auto; left:auto; bottom:auto;
 }
-#about-me h2{ font-size: clamp(1.5rem, 2.8vw, 2.25rem); color:#a37cf0; }
+#about-me h2{ color:#a37cf0; }
 #about-me p{ font-size: 1.125rem; color:#5b3629; }
 #aboutImgDiv{
+  height: 1%;
   margin: 0;
 }
 
@@ -50,6 +51,59 @@
   }
 }
 
+#education{
+  gap: 2rem;
+}
 
+#education .edu-block{
+  align-items: center;
+}
 
+#education .edu-logo{
+  max-width: 90px;
+  margin: 0 auto;
+}
 
+#education .edu-details{
+  gap: 0.5rem;
+}
+
+#education .edu-details h3{
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.9rem);
+  color: var(--ink);
+}
+
+#education .edu-details p{
+  font-size: 1.125rem;
+  color: #5b3629;
+}
+
+#education .coursework h4{
+  margin: 0;
+  font-size: 1rem;
+  color: #918983;
+}
+
+#education .course-list{
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #5b3629;
+}
+
+#education .edu-details > * + *{
+  margin-top: 0.3rem;
+}
+
+#education .coursework.stack > * + *{
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 900px){
+  #education .edu-block{
+    align-items: start;
+  }
+  #education .edu-logo{
+    justify-self: start;
+  }
+}

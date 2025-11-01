@@ -34,13 +34,15 @@ h1{
   text-align: left;
   color: #5b3629;
   font-weight: 600;
-  animation: slideIn 1s forwards;
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideIn 0.9s ease-out forwards;
   animation-delay: 0.2s;
+  animation-fill-mode: both;
 }
 
 @keyframes slideIn {
   from { transform: translateX(30px); opacity: 0; }
   to   { transform: translateX(0); opacity: 1; }
 }
-
 
