@@ -23,43 +23,22 @@
 
 
       <section class="edu-block grid grid-2">
-          <img class="pwest" src="img/msu.png" alt="Montana State University logo">
           <div class="pwestText stack">
               <h2>Montana State University</h2>
               <p>B.A. in Computer Science (in progress).</p>
+              <ul>
+                  <li>Relevant Coursework:</li>
+                  <ul>
+                      <li>Data Structures and Algorithms I & II (CSCI 132  & 232)</li>
+                      <li>Web Design (CS 145RA)</li>
+                      <li>Discrete Structures (CSCI 246)</li>
+                      <li>Joy and Beauty of Data (CSCI 127)</li>
+                  </ul>
           </div>
       </section>
 
-      <section class="edu-block grid grid-2">
-      <img class="pwest" src="img/file (1).png" alt="Parkway West logo">
-      <div class="pwestText stack">
-        <h2>Parkway West High School</h2>
-        <p>Graduated 2024 — Chesterfield, MO.</p>
-      </div>
-    </section>
-
-    <section class="edu-block grid grid-2">
-      <img class="pwest" src="img/st.png" alt="South Tech logo">
-      <div class="pwestText stack">
-        <h2>South Tech High School</h2>
-        <p>Web & Computer Programming alongside PWest (junior & senior years).</p>
-      </div>
-    </section>
-
-
-
   </main>
-  <script>
-    // simple scroll progress for the fixed bar
-    const bar = document.querySelector('.progress-bar');
-    function onScroll(){
-      const el = document.documentElement;
-      const h = el.scrollHeight - el.clientHeight;
-      const pct = Math.max(0, Math.min(1, (window.scrollY||el.scrollTop)/h));
-      bar.style.height = (pct*100).toFixed(1) + '%';
-    }
-    document.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  </script>
+
+  
 </body>
 </html>
