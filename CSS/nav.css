@@ -63,7 +63,7 @@ nav #name {
     border-radius:2px;
 }
 
-@meadia(max-wdith: 760px){
+@media(max-width: 760px){
     nav{
         display: flex;
         align-items: center;
