@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Toggle the .show class on the menu
       navMenu.classList.toggle('show');
 
+      // (THIS IS THE NEW LINE) Toggle a class on the body
+      document.body.classList.toggle('nav-open');
+
       // Update the aria-expanded attribute for accessibility
       const isExpanded = navMenu.classList.contains('show');
       navToggle.setAttribute('aria-expanded', isExpanded);

@@ -1,6 +1,6 @@
 /* Nav bar styles */
 nav {
-    position:relative;
+    position:fixed;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -71,19 +71,28 @@ nav #name {
     }
     nav ul{
         position: absolute;
-        top: 100%;
-        right: 24px;
-        left:24 px;
-        display: none; 
-        flex-direction: column;
-        gap:0;
-        padding:12px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    top: 100%;
+    right: 0;
+    left: 0;
+    
+    flex-direction: column;
+    gap:0;
+    padding:12px;
+    background: #fff;
+    border-radius: 0; 
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Start it 10px "above" */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
     }
     nav ul.show{
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); /* Move to original position */
+        
     }
 
 
@@ -101,4 +110,48 @@ nav #name {
         flex-direction:column;
         justify-content:center;
     }
+}
+/*
+  This creates the dimming overlay.
+  It's "attached" to the body, but is invisible by default.
+*/
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100; /* High z-index */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+/*
+  When we add the .nav-open class (with JS),
+  we make the overlay visible.
+*/
+body.nav-open::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*
+  We also prevent the main page from scrolling 
+  when the menu is open.
+*/
+body.nav-open {
+  overflow: hidden;
+}
+
+/*
+  Finally, we MUST make sure the nav bar itself 
+  is on TOP of the new overlay.
+*/
+nav {
+  position: relative;
+  width: 100%;
+  z-index: 101; /* Must be higher than body::before */
 }
