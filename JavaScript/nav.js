@@ -1,16 +1,22 @@
-document.addEventListener('DOMContentLoaded', () =>{
+// Wait for the page to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
 
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-ul');
+  // Find the button and the menu
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('nav ul');
 
-    if(navToggle && navMenu){
-        tavToggle.adEventListener('clock',() =>{
-            navMenu.classList.toggle('show');
+  // Only run if both elements were found
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      // Toggle the .show class on the menu
+      navMenu.classList.toggle('show');
 
-            const isExpanded = navMenu.classList.contains('show');
-            navToggle.setAttribute('aria-expanded', isExpanded);
-
-        });
-    }
-
+      // Update the aria-expanded attribute for accessibility
+      const isExpanded = navMenu.classList.contains('show');
+      navToggle.setAttribute('aria-expanded', isExpanded);
+    });
+  } else {
+    // If this runs, something is wrong with the HTML selectors
+    console.log("Error: Could not find nav toggle button or nav menu.");
+  }
 });

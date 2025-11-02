@@ -83,17 +83,22 @@ nav #name {
         box-shadow: 0 10px 25px rgba(0,0,0,.08);
     }
     nav ul.show{
-    display:flex;
-  }
-  nav li{
-    font-size:20px;
-  }
-  nav li a{
-    padding:10px;
-  }
-  .nav-toggle{
-    display:inline-flex;
-    flex-direction:column;
-    justify-content:center;
-  }
+        display: flex;
+    }
+
+
+
+    
+  
+    nav li{
+        font-size:20px;
+    }
+    nav li a{
+        padding:10px;
+    }
+    .nav-toggle{
+        display:inline-flex;
+        flex-direction:column;
+        justify-content:center;
+    }
 }
