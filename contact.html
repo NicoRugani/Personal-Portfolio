@@ -74,7 +74,7 @@
           let errorMessage = 'Oops! There was a problem sending your message.';
           
           if (response.status === 403) {
-            errorMessage = 'AJAX submission blocked. Please disable reCAPTCHA in your Formspree form settings (Settings > Spam Protection > toggle reCAPTCHA to Off).';
+            errorMessage = 'Access denied. Please check your Formspree form configuration or try again later.';
           } else if (response.status === 429) {
             errorMessage = 'Too many requests. Please wait a moment and try again.';
           }
