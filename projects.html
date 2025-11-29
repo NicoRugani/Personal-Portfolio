@@ -6,6 +6,7 @@
   <title>Projects — Nicholas Rugani</title>
   <link rel="stylesheet" href="CSS/nav.css" />
   <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/projects.css" />
 </head>
 <body>
   <nav>
@@ -21,22 +22,57 @@
     </nav>
   <main class="wrapper section">
     <h1>My Projects!</h1>
-    <section class="projects grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+    <section class="projects grid">
       
-      <article class="card stack">
-        <h3>Circular Linked List Battle Simulator (Java)</h3>
-        <p>Data structures + simple game loop; refactored into multiple classes.</p>
-        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+      <article class="project-card">
+      
+        <div class="project-content">
+          <h3>Circular Linked List Battle Simulator</h3>
+          <p>An interactive battle simulator game built with Java that demonstrates advanced data structure implementation. Features a circular linked list for managing combatants and a game loop that handles turn-based combat mechanics.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">OOP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/NicoRugani/Circular_LinkedList_Battle_sim" target="_blank" rel="noopener" class="project-link">View Code</a>
+          </div>
+        </div>
       </article>
-      <article class="card stack">
-        <h3>Akinator-style BST (Java)</h3>
-        <p>Binary tree with persistent storage; learns new nodes across runs.</p>
-        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+
+      <article class="project-card">
+        
+        <div class="project-content">
+          <h3>Akinator-style BST</h3>
+          <p>A binary search tree implementation that mimics the Akinator game concept. The tree learns and stores new nodes across program runs using persistent storage, creating an interactive guessing game that improves over time.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Binary Trees</span>
+            <span class="tech-tag">File I/O</span>
+            <span class="tech-tag">Recursion</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/NicoRugani/BST_Akinator" target="_blank" rel="noopener" class="project-link">View Code</a>
+          </div>
+        </div>
       </article>
-      <article class="card stack">
-        <h3>Epic Outdoors Website</h3>
-        <p>Static site (HTML/CSS/JS) showcasing outdoor content; focus on UX and layout.</p>
-        <a href="https://github.com/NicoRugani" target="_blank" rel="noopener">Code →</a>
+
+      <article class="project-card">
+        
+        <div class="project-content">
+          <h3>Epic Outdoors Website</h3>
+          <p>A responsive static website showcasing outdoor adventures and content. Built with vanilla HTML, CSS, and some small bit JavaScript with a focus on clean UX design and intuitive layout.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive Design</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/NicoRugani/WebDesignFinalProject" target="_blank" rel="noopener" class="project-link">View Code</a>
+            <a href="https://nicorugani.github.io/WebDesignFinalProject/" target="_blank" rel="noopener" class="project-link secondary">Check it out!</a>
+          </div>
+        </div>
       </article>
     </section>
     <section class = "more-info stack">
@@ -46,5 +82,6 @@
 
   </main>
   <script src="JavaScript/nav.js"></script>
+  <script src="JavaScript/projects.js"></script>
 </body>
 </html>

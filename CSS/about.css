@@ -70,7 +70,7 @@
 
 #education .edu-details h3{
   margin: 0;
-  font-size: clamp(1.15rem, 2.5vw, 1.9rem);
+  font-size: 1.25rem;
   color: var(--ink);
 }
 
