@@ -27,11 +27,11 @@
       <div class="card stack contact-message">
         <form id="contact-form" action="https://formspree.io/f/meobbnnq" method="POST">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <input type="text" id="name" name="name" autocomplete="name" required>
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" autocomplete="email" required>
           <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea id="message" name="message" autocomplete="off" required></textarea>
           <button type="submit">Send</button>
           <div id="form-status" class="form-status" style="display: none;"></div>
         </form>
@@ -55,12 +55,14 @@
 
       try {
         const formData = new FormData(form);
+        
         const response = await fetch(form.action, {
           method: 'POST',
           body: formData,
           headers: {
             'Accept': 'application/json'
           }
+          // Note: Don't set Content-Type - let browser set it with boundary for FormData
         });
 
         if (response.ok) {
@@ -69,17 +71,33 @@
           status.style.display = 'block';
           form.reset();
         } else {
-          const data = await response.json();
-          if (data.errors) {
-            status.textContent = data.errors.map(error => error.message).join(', ');
-          } else {
-            status.textContent = 'Oops! There was a problem sending your message. Please try again.';
+          let errorMessage = 'Oops! There was a problem sending your message.';
+          
+          if (response.status === 403) {
+            errorMessage = 'AJAX submission blocked. Please disable reCAPTCHA in your Formspree form settings (Settings > Spam Protection > toggle reCAPTCHA to Off).';
+          } else if (response.status === 429) {
+            errorMessage = 'Too many requests. Please wait a moment and try again.';
           }
+          
+          try {
+            const responseData = await response.json();
+            if (responseData.errors && responseData.errors.length > 0) {
+              errorMessage = responseData.errors.map(error => error.message).join(', ');
+            } else if (responseData.error) {
+              errorMessage = responseData.error;
+            }
+          } catch (parseError) {
+            // If we can't parse the error response, use the default message
+            console.error('Error response:', response.status, response.statusText);
+          }
+          
+          status.textContent = errorMessage;
           status.className = 'form-status error';
           status.style.display = 'block';
         }
       } catch (error) {
-        status.textContent = 'Oops! There was a problem sending your message. Please try again.';
+        console.error('Form submission error:', error);
+        status.textContent = 'Network error. Please check your connection and try again.';
         status.className = 'form-status error';
         status.style.display = 'block';
       } finally {
