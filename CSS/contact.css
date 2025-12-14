@@ -84,6 +84,12 @@
   resize: vertical;
 }
 
+.required-label::after {
+  content: '*';
+  color: red;
+  margin-left: 0.25rem;
+}
+
 .contact-message button[type="submit"] {
   background: var(--brand, #805ad5);
   color: #fff;
