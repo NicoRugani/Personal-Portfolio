@@ -21,7 +21,7 @@ nav li {
 
 nav li a {
     display: block;
-    color: #918983;
+    color: var(--ink);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -92,6 +92,7 @@ nav #name {
         opacity: 1;
         visibility: visible;
         transform: translateY(0); /* Move to original position */
+        border-radius: 10%
         
     }
 
