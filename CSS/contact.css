@@ -33,7 +33,7 @@
 .contact-message p{
   margin: 0;
   font-size: 1.125rem;
-  color: var(--ink);
+  color: var(--text-1);
 }
 /** Form Styles for Contact Page */
 .contact-message form {
@@ -42,32 +42,36 @@
   gap: 1rem;
   width: 100%;
   max-width: 360px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  background: rgba(10, 13, 20, 0.68);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 14px 28px rgba(1, 3, 8, 0.38);
   padding: 2rem 1.5rem;
   align-items: stretch;
+  position: relative;
 }
 
 .contact-message label {
-  font-size: 1rem;
-  color: var(--ink, #222);
+  font-size: 0.78rem;
+  color: var(--accent-2);
   margin-bottom: 0.25rem;
   text-align: left;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 .contact-message input[type="text"],
 .contact-message input[type="email"],
 .contact-message textarea {
-  border: 1px solid #e3e3e7;
+  border: 1px solid rgba(156, 167, 189, 0.3);
   border-radius: 6px;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  transition: border-color 0.2s;
-  color: var(--ink, #222);
-  background: #fafbfc;
+  transition: border-color var(--motion-fast) var(--ease), box-shadow var(--motion-fast) var(--ease), background-color var(--motion-fast) var(--ease);
+  color: var(--text-0);
+  background: rgba(255, 255, 255, 0.02);
   outline: none;
   resize: none;
 }
@@ -75,8 +79,9 @@
 .contact-message input[type="text"]:focus,
 .contact-message input[type="email"]:focus,
 .contact-message textarea:focus {
-  border-color: var(--brand, #805ad5);
-  background: #f6f2fe;
+  border-color: rgba(82, 208, 83, 0.65);
+  background: rgba(82, 208, 83, 0.06);
+  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.22), 0 0 16px var(--glow);
 }
 
 .contact-message textarea {
@@ -91,33 +96,37 @@
 }
 
 .contact-message button[type="submit"] {
-  background: var(--brand, #805ad5);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  background: rgba(163, 124, 240, 0.14);
+  color: var(--accent);
+  border: 1px solid rgba(163, 124, 240, 0.5);
+  border-radius: 10px;
   padding: 0.75rem 1.25rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background-color 0.18s, transform 0.14s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(128,90,213,.08);
+  transition: all var(--motion-fast) var(--ease);
+  box-shadow: 0 8px 20px rgba(2, 4, 10, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .contact-message button[type="submit"]:hover,
 .contact-message button[type="submit"]:focus {
-  background: #6b46c1;
-  transform: translateY(-2px) scale(1.025);
-  box-shadow: 0 8px 24px rgba(128,90,213, 0.16);
+  transform: translateY(-1px);
+  border-color: rgba(82, 208, 83, 0.62);
+  color: var(--accent-2);
+  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.2), 0 0 16px var(--glow);
 }
 
 .contact-message input[type="text"]::placeholder,
 .contact-message input[type="email"]::placeholder,
 .contact-message textarea::placeholder {
-  color: #adb0bb;
+  color: rgba(156, 167, 189, 0.72);
   opacity: 1;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.01em;
 }
 
@@ -131,7 +140,7 @@
 .contact-message button:focus-visible,
 .contact-message input:focus-visible,
 .contact-message textarea:focus-visible {
-  outline: 2px solid var(--brand, #805ad5);
+  outline: 2px solid var(--accent, #a37cf0);
   outline-offset: 1px;
 }
 
@@ -143,22 +152,25 @@
 
 .form-status {
   padding: 0.75rem 1rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
   margin-top: 0.5rem;
-  text-align: center;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 .form-status.success {
-  background-color: #d1fae5;
-  color: #065f46;
-  border: 1px solid #6ee7b7;
+  background-color: rgba(82, 208, 83, 0.08);
+  color: #b7f8b7;
+  border: 1px solid rgba(82, 208, 83, 0.42);
 }
 
 .form-status.error {
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fca5a5;
+  background-color: rgba(235, 111, 146, 0.1);
+  color: #ff9bb5;
+  border: 1px solid rgba(235, 111, 146, 0.42);
 }
 
 

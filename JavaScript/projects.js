@@ -1,34 +1,48 @@
-// Projects page animations and interactions
+document.addEventListener("DOMContentLoaded", () => {
+  const projectCards = Array.from(document.querySelectorAll(".project-card"));
+  const filterChips = Array.from(document.querySelectorAll(".filter-chip"));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Fade in project cards on scroll
-  const projectCards = document.querySelectorAll('.project-card');
-  
-  // Create Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+  const setCardVisible = (card, visible) => {
+    card.style.display = visible ? "flex" : "none";
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Add delay for staggered animation
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, index * 100);
-        observer.unobserve(entry.target);
-      }
+  const applyFilter = (tag) => {
+    projectCards.forEach((card) => {
+      const tags = card.dataset.tags || "";
+      const isMatch = tag === "all" || tags.split(",").map((item) => item.trim()).includes(tag);
+      setCardVisible(card, isMatch);
     });
-  }, observerOptions);
+  };
 
-  // Initialize cards with hidden state and observe them
-  projectCards.forEach((card) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
+  filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const target = chip.dataset.filter || "all";
+      filterChips.forEach((item) => item.classList.remove("active"));
+      chip.classList.add("active");
+      applyFilter(target);
+    });
   });
+
+  if (!reduceMotion) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("reveal-in");
+          }, index * 90);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    projectCards.forEach((card) => {
+      card.classList.add("reveal-init");
+      observer.observe(card);
+    });
+  }
 });
 

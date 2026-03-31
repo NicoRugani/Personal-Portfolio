@@ -1,158 +1,124 @@
-/* Nav bar styles */
 nav {
-    position:fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    /* Add background color to nav for better visibility */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 101;
+  backdrop-filter: blur(8px);
+  background: rgba(16, 18, 24, 0.86);
+  border-bottom: 1px solid var(--line);
 }
 
 nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.55rem 1rem;
 }
 
 nav li {
-    font-size: 30px;
+  font-size: 1rem;
 }
 
 nav li a {
-    display: block;
-    color: var(--ink);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: var(--text-1);
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: color var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease), box-shadow var(--motion-fast) var(--ease), transform var(--motion-fast) var(--ease);
 }
 
 nav li a:hover {
-    color: #a37cf0;
-    transition: transform 0.2s ease-in-out;
-    text-decoration: none;
-    transform: scale(1.3);
+  color: var(--text-0);
+  border-color: #52D053;
+  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.35), 0 0 16px var(--glow);
+  transform: translateY(-1px);
 }
 
 nav .active {
-    font-weight: bolder;
-    color: #a37cf0;
+  color: var(--accent);
+  border-color: rgba(163, 124, 240, 0.5);
+  box-shadow: 0 0 0 1px rgba(163, 124, 240, 0.24), 0 0 14px rgba(163, 124, 240, 0.18);
 }
 
-nav #name {
-    margin-left: auto;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0.5rem 0.8rem;
+  padding: 0.45rem;
+  cursor: pointer;
 }
 
-.nav-toggle{
-    display: none;
-    background:none;
-    border:0;
-    padding:12px;
-    cursor:pointer;
-}
-.nav-toggle span{
-    display:block;
-    width:25px;
-    height:3px;
-    margin-bottom:5px;
-    background:#5b3629;
-    border-radius:2px;
+.nav-toggle span {
+  display: block;
+  width: 23px;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--text-0);
+  border-radius: 999px;
 }
 
-@media(max-width: 760px){
-    nav{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    nav ul{
-        position: absolute;
+@media (max-width: 760px) {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  nav ul {
+    position: absolute;
     top: 100%;
     right: 0;
     left: 0;
-    
     flex-direction: column;
-    gap:0;
-    padding:12px;
-    background: #fff;
-    border-radius: 0; 
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
-
-    
+    gap: 0.35rem;
+    padding: 0.8rem;
+    background: rgba(23, 27, 36, 0.96);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.38);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px); /* Start it 10px "above" */
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-    nav ul.show{
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0); /* Move to original position */
-        border-radius: 10%
-        
-    }
+    transform: translateY(-8px);
+    transition: opacity var(--motion-base) var(--ease), transform var(--motion-base) var(--ease), visibility var(--motion-base) var(--ease);
+  }
 
+  nav ul.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
+  nav li a {
+    border-color: rgba(156, 167, 189, 0.2);
+  }
 
-    
-  
-    nav li{
-        font-size:20px;
-    }
-    nav li a{
-        padding:10px;
-    }
-    .nav-toggle{
-        display:inline-flex;
-        flex-direction:column;
-        justify-content:center;
-    }
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
-/*
-  This creates the dimming overlay.
-  It's "attached" to the body, but is invisible by default.
-*/
+
 body::before {
-  content: '';
+  content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 100; /* High z-index */
+  inset: 0;
+  background: rgba(6, 8, 12, 0.6);
+  z-index: 100;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s;
+  transition: opacity var(--motion-base) var(--ease), visibility var(--motion-base) var(--ease);
 }
 
-/*
-  When we add the .nav-open class (with JS),
-  we make the overlay visible.
-*/
 body.nav-open::before {
   opacity: 1;
   visibility: visible;
 }
 
-/*
-  We also prevent the main page from scrolling 
-  when the menu is open.
-*/
 body.nav-open {
   overflow: hidden;
-}
-
-/*
-  Finally, we MUST make sure the nav bar itself 
-  is on TOP of the new overlay.
-*/
-nav {
-  position: relative;
-  width: 100%;
-  z-index: 101; /* Must be higher than body::before */
 }

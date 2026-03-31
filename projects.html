@@ -21,10 +21,17 @@
         </ul>
     </nav>
   <main class="wrapper section">
-    <h1>My Projects!</h1>
+    <h1 class="section-divider">My Projects</h1>
+    <div class="project-filters" aria-label="Project filters">
+      <button class="filter-chip active" data-filter="all" type="button">All</button>
+      <button class="filter-chip" data-filter="Java" type="button">Java</button>
+      <button class="filter-chip" data-filter="JavaScript" type="button">JavaScript</button>
+      <button class="filter-chip" data-filter="Data Structures" type="button">Data Structures</button>
+      <button class="filter-chip" data-filter="Responsive Design" type="button">Responsive</button>
+    </div>
     <section class="projects grid">
       
-      <article class="project-card">
+      <article class="project-card" data-tags="Java,Data Structures,OOP">
       
         <div class="project-content">
           <h3>Circular Linked List Battle Simulator</h3>
@@ -40,7 +47,7 @@
         </div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-tags="Java,Binary Trees,File I/O,Recursion">
         
         <div class="project-content">
           <h3>Akinator-style BST</h3>
@@ -57,7 +64,7 @@
         </div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-tags="HTML,CSS,JavaScript,Responsive Design">
         
         <div class="project-content">
           <h3>Mock Retail Store Website</h3>
