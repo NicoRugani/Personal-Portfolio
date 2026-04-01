@@ -101,6 +101,13 @@
   border: 1px solid rgba(82, 208, 83, 0.28);
   border-radius: 12px;
   padding: 1rem 1.1rem;
+  align-self: start;         /* Make sure it aligns to the top of its grid/cell */
+  margin-top: 0;             /* Remove default top margin/gap if any */
+  margin-bottom: 0;          /* Remove any unwanted bottom margin */
+  /* Optionally, reduce vertical padding if the panel still sits low:
+  padding-top: 0.6rem;
+  padding-bottom: 0.8rem;
+  */
 }
 
 .hero-panel p {
@@ -115,15 +122,20 @@
   border-top: 1px dashed rgba(156, 167, 189, 0.25);
 }
 
+
 .meta-label {
   display: inline-block;
-  min-width: 72px;
+  min-width: 0;
   margin-right: 0.6rem;
   color: var(--accent-2);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.72rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 @keyframes fade-up {

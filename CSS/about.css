@@ -1,36 +1,60 @@
 /* ===== about.css ===== */
 
-/* Main grid layout for about cards - vertical stacking */
 .about-grid {
   grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-/* About card styling - similar to project cards */
 .about-card {
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)), var(--bg-1);
+  box-shadow: 0 8px 24px rgba(2, 4, 9, 0.35);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--motion-base) var(--ease), box-shadow var(--motion-base) var(--ease), border-color var(--motion-base) var(--ease);
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  transform-origin: center;
+}
+
+.about-card::before,
+.about-card::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(82, 208, 83, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-card::before {
+  top: 10px;
+  left: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.about-card::after {
+  right: 10px;
+  bottom: 10px;
+  border-top: 0;
+  border-left: 0;
 }
 
 .about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(82, 208, 83, 0.5);
+  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.2), 0 18px 34px rgba(2, 4, 9, 0.45), 0 0 20px var(--glow);
+  z-index: 1;
 }
 
 .about-card-content {
-  padding: 1.5rem;
+  padding: 1.3rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -40,20 +64,22 @@
 .about-card-content h2 {
   margin: 0;
   font-size: clamp(1.35rem, 2.4vw, 2rem);
-  color: var(--brand);
+  font-family: "Orbitron", "Rajdhani", system-ui, sans-serif;
+  letter-spacing: 0.05em;
+  color: var(--accent);
   line-height: 1.3;
 }
 
 .about-card-content h3 {
   margin: 0;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  color: var(--ink);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  color: var(--text-0);
   line-height: 1.3;
 }
 
 .about-card-content p {
   margin: 0;
-  color: var(--muted);
+  color: var(--text-1);
   font-size: 1rem;
   line-height: 1.6;
   flex-grow: 1;
@@ -62,7 +88,7 @@
 .about-card-content ul {
   margin: 0;
   padding-left: 1.2rem;
-  color: var(--muted);
+  color: var(--text-1);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -72,28 +98,29 @@
 }
 
 .about-card-content a {
-  color: var(--brand);
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
+  transition: color var(--motion-fast) var(--ease);
 }
 
 .about-card-content a:hover {
-  text-decoration: underline;
+  color: var(--accent-2);
+  text-decoration: none;
 }
 
-/* Education specific styles */
 .edu-details {
   gap: 0.5rem;
 }
 
 .edu-details h3 {
   font-size: 1.25rem;
-  color: var(--ink);
+  color: var(--text-0);
 }
 
 .edu-details p {
   font-size: 1rem;
-  color: var(--muted);
+  color: var(--text-1);
 }
 
 .coursework {
@@ -104,14 +131,14 @@
 .coursework h4 {
   margin: 0;
   font-size: 1rem;
-  color: var(--ink);
+  color: var(--text-0);
   font-weight: 600;
 }
 
 .course-list {
   margin: 0;
   padding-left: 1.2rem;
-  color: var(--muted);
+  color: var(--text-1);
 }
 
 .course-list li {
@@ -125,8 +152,9 @@
 .coursework.stack > * + * {
   margin-top: 0.25rem;
 }
+
 #in-progress {
-  color: var(--muted);
+  color: var(--text-1);
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -134,10 +162,18 @@
   margin-left: 0.5rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
   .about-grid {
-    gap: 1.5rem;
-    max-width: 100%;
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card {
+    transition: none;
+  }
+
+  .about-card:hover {
+    transform: none;
   }
 }
