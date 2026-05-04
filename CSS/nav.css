@@ -32,8 +32,8 @@ nav li a {
 
 nav li a:hover {
   color: var(--text-0);
-  border-color: #52D053;
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.35), 0 0 16px var(--glow);
+  border-color: #52c8d0;
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.35), 0 0 16px var(--glow);
   transform: translateY(-1px);
 }
 

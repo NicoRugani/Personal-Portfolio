@@ -27,7 +27,7 @@
   position: absolute;
   width: 9px;
   height: 9px;
-  border: 1px solid rgba(82, 208, 83, 0.5);
+  border: 1px solid rgba(82, 200, 208, 0.5);
   pointer-events: none;
   z-index: 1;
 }
@@ -48,8 +48,8 @@
 
 .about-card:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgba(82, 208, 83, 0.5);
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.2), 0 18px 34px rgba(2, 4, 9, 0.45), 0 0 20px var(--glow);
+  border-color: rgba(82, 200, 208, 0.5);
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.2), 0 18px 34px rgba(2, 4, 9, 0.45), 0 0 20px var(--glow);
   z-index: 1;
 }
 
@@ -135,16 +135,6 @@
   font-weight: 600;
 }
 
-.course-list {
-  margin: 0;
-  padding-left: 1.2rem;
-  color: var(--text-1);
-}
-
-.course-list li {
-  margin-bottom: 0.4rem;
-}
-
 .edu-details > * + * {
   margin-top: 0.3rem;
 }
@@ -176,4 +166,47 @@
   .about-card:hover {
     transform: none;
   }
+}
+
+.hfc-block + .hfc-block {
+  margin-top: 0.4rem;
+}
+
+.course-code {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--accent-2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.hfc-list,
+.course-list {
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hfc-list dt,
+.course-list dt {
+  color: var(--accent-2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.hfc-list dd,
+.course-list dd {
+  margin: 0;
+  color: var(--text-1);
+  font-size: 1rem;
+  line-height: 1.6;
 }

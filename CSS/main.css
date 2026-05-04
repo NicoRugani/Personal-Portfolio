@@ -7,8 +7,8 @@
   --text-0: #e7ebf4;
   --text-1: #9ca7bd;
   --accent: #a37cf0;
-  --accent-2: #52D053;
-  --glow: rgba(82, 208, 83, 0.2);
+  --accent-2: #52c8d0;
+  --glow: rgba(82, 200, 208, 0.2);
   --line: rgba(156, 167, 189, 0.2);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --motion-fast: 180ms;
@@ -32,7 +32,7 @@ body {
   margin: 0;
   color: var(--text-0);
   background-color: var(--bg-0);
-  background-image: radial-gradient(1100px 520px at 84% -4%, rgba(82, 208, 83, 0.08), transparent 60%);
+  background-image: radial-gradient(1100px 520px at 84% -4%, rgba(82, 200, 208, 0.08), transparent 60%);
   background-repeat: no-repeat;
   background-size: 100% 560px;
   background-position: top center;
@@ -147,7 +147,7 @@ a:hover {
   position: absolute;
   width: 10px;
   height: 10px;
-  border: 1px solid rgba(82, 208, 83, 0.45);
+  border: 1px solid rgba(82, 200, 208, 0.45);
   pointer-events: none;
 }
 

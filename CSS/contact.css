@@ -80,9 +80,9 @@
 .contact-message input[type="text"]:focus,
 .contact-message input[type="email"]:focus,
 .contact-message textarea:focus {
-  border-color: rgba(82, 208, 83, 0.65);
-  background: rgba(82, 208, 83, 0.06);
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.22), 0 0 16px var(--glow);
+  border-color: rgba(82, 200, 208, 0.65);
+  background: rgba(82, 200, 208, 0.06);
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.22), 0 0 16px var(--glow);
 }
 
 .contact-message textarea {
@@ -117,9 +117,9 @@
 .contact-message button[type="submit"]:hover,
 .contact-message button[type="submit"]:focus {
   transform: translateY(-1px);
-  border-color: rgba(82, 208, 83, 0.62);
+  border-color: rgba(82, 200, 208, 0.62);
   color: var(--accent-2);
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.2), 0 0 16px var(--glow);
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.2), 0 0 16px var(--glow);
 }
 
 .contact-message input[type="text"]::placeholder,
@@ -163,9 +163,9 @@
 }
 
 .form-status.success {
-  background-color: rgba(82, 208, 83, 0.08);
-  color: #b7f8b7;
-  border: 1px solid rgba(82, 208, 83, 0.42);
+  background-color: rgba(82, 200, 208, 0.08);
+  color: #b7eef2;
+  border: 1px solid rgba(82, 200, 208, 0.42);
 }
 
 .form-status.error {

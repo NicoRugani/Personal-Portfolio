@@ -23,8 +23,8 @@
 .filter-chip:hover,
 .filter-chip.active {
   color: var(--text-0);
-  border-color: rgba(82, 208, 83, 0.55);
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.22), 0 0 12px var(--glow);
+  border-color: rgba(82, 200, 208, 0.55);
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.22), 0 0 12px var(--glow);
 }
 
 .projects {
@@ -65,7 +65,7 @@
   position: absolute;
   width: 9px;
   height: 9px;
-  border: 1px solid rgba(82, 208, 83, 0.5);
+  border: 1px solid rgba(82, 200, 208, 0.5);
   pointer-events: none;
 }
 
@@ -85,8 +85,8 @@
 
 .project-card:hover {
   transform: translateY(-6px) scale(1.025);
-  border-color: rgba(82, 208, 83, 0.5);
-  box-shadow: 0 0 0 1px rgba(82, 208, 83, 0.2), 0 22px 38px rgba(2, 4, 9, 0.5), 0 0 24px var(--glow);
+  border-color: rgba(82, 200, 208, 0.5);
+  box-shadow: 0 0 0 1px rgba(82, 200, 208, 0.2), 0 22px 38px rgba(2, 4, 9, 0.5), 0 0 24px var(--glow);
   z-index: 2;
 }
 
@@ -120,11 +120,11 @@
 .tech-tag {
   display: inline-block;
   padding: 0.3rem 0.62rem;
-  background: rgba(82, 208, 83, 0.12);
+  background: rgba(82, 200, 208, 0.12);
   color: var(--accent-2);
   border-radius: 999px;
   font-size: 0.73rem;
-  border: 1px solid rgba(82, 208, 83, 0.25);
+  border: 1px solid rgba(82, 200, 208, 0.25);
   transition: all var(--motion-fast) var(--ease);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -161,8 +161,8 @@
 }
 
 .project-link.secondary {
-  background: rgba(82, 208, 83, 0.08);
-  border-color: rgba(82, 208, 83, 0.42);
+  background: rgba(82, 200, 208, 0.08);
+  border-color: rgba(82, 200, 208, 0.42);
   color: var(--accent-2);
 }
 
