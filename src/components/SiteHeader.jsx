@@ -4,7 +4,8 @@ export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState(() =>
     window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-  );
+  ); 
+
   const menuButton = useRef(null);
   const header = useRef(null);
 

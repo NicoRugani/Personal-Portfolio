@@ -10,13 +10,13 @@
   --page: #f8f9fc;
   --surface: #ffffff;
   --ink: #2a1838;
-  --muted: #526176;
+  --muted: #50565e;
   --accent: #7524cc;
   --accent-hover: #8e59c7;
   --accent-ink: #ffffff;
-  --line: #dbe1eb;
+  --line: #2a1838;
   --soft: #edf1fa;
-  --diagram-line: #7085b1;
+  --diagram-line: #88898b;
   --diagram-fill: #dfe7fb;
   color: var(--ink);
   background: var(--page);
@@ -30,11 +30,11 @@
   --page: #201727;
   --surface: #21122f;
   --ink: #edf2fb;
-  --muted: #c0b0d3;
+  --muted: #d7bafb;
   --accent: #b36cff;
-  --accent-hover: #a180c3;
+  --accent-hover: #d1a3ff;
   --accent-ink: #12203e;
-  --line: #354459;
+  --line: #ffffff;
   --soft: #2c1f3d;
   --diagram-line: #f3f4f6;
   --diagram-fill: #4b395e;
@@ -67,6 +67,10 @@ a {
 }
 a:hover {
   color: var(--accent-hover);
+  transform: scale(1.05);
+}
+a:active {
+  transform: scale(0.95);
 }
 button:focus-visible,
 a:focus-visible {
@@ -191,7 +195,7 @@ p {
   place-items: center;
   width: 38px;
   height: 38px;
-  background: var(--ink);
+  background: var(--accent);
   color: var(--page);
   border-radius: 20px;
   font-size: 1.2rem;
