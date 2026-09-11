@@ -3,6 +3,7 @@
 ## MAJOR UPDATE IN PROGRESS
 
 Hello, I'm currently working on a major update to this webpage. More details soon!
+In the mean time the old version will remain active but if you want to keep track of the progress for the update, Check out the 'Refactor' Branch ;)
 
 
 ## Current Progress
