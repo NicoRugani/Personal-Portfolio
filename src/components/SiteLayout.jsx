@@ -15,7 +15,7 @@ export default function SiteLayout() {
         <a className="footer-name" href="/">
           Nicholas Rugani
         </a>
-        <p>Built with love :&#x29;</p>
+        <p>Built with React, Vite, and Love :&#x29;</p>
         <a href="https://github.com/NicoRugani">
           GitHub <span aria-hidden="true">↗</span>
         </a>

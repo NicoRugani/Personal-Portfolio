@@ -57,7 +57,7 @@ export default function HomePage() {
             <p className="eyebrow">Selected work</p>
             <h2 id="work-heading">Ideas, put to code.</h2>
           </div>
-          <a className="text-link" href="/projects.html">
+          <a className="text-link" href="https://github.com/nicorugani" target="_blank" rel="noopener noreferrer">
             All projects <span aria-hidden="true">↗</span>
           </a>
         </div>
