@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import siteUrl from '../siteUrl.js';
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function SiteHeader() {
   return (
     <header className="site-header" ref={header}>
       <div className="header-inner section-shell">
-        <a className="wordmark" href="/" aria-label="Nicholas Rugani, home">
+        <a className="wordmark" href={siteUrl()} aria-label="Nicholas Rugani, home">
           <span className="monogram" aria-hidden="true">
             nr.
           </span>
@@ -68,13 +69,13 @@ export default function SiteHeader() {
             if (!header.current.contains(event.relatedTarget)) setMenuOpen(false);
           }}
         >
-          <a href="/projects.html" onClick={() => setMenuOpen(false)}>
+          <a href={siteUrl('projects.html')} onClick={() => setMenuOpen(false)}>
             Projects
           </a>
-          <a href="/about.html" onClick={() => setMenuOpen(false)}>
+          <a href={siteUrl('about.html')} onClick={() => setMenuOpen(false)}>
             About
           </a>
-          <a className="nav-contact" href="/contact.html" onClick={() => setMenuOpen(false)}>
+          <a className="nav-contact" href={siteUrl('contact.html')} onClick={() => setMenuOpen(false)}>
             Get in touch <span aria-hidden="true">↗</span>
           </a>
           <button

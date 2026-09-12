@@ -4,6 +4,9 @@ import react from '@vitejs/plugin-react';
 
 // Keep the original pages available until their React replacements are ready.
 export default defineConfig({
+  // The site is published at https://nicorugani.github.io/Personal-Portfolio/,
+  // so built asset URLs must be prefixed with that subpath.
+  base: '/Personal-Portfolio/',
   plugins: [react()],
   build: {
     rollupOptions: {

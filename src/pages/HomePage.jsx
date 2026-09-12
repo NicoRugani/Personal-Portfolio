@@ -1,5 +1,6 @@
 import ProjectCard from '../components/ProjectCard.jsx';
-import { projects } from '../data/projects.js'; 
+import { projects } from '../data/projects.js';
+import siteUrl from '../siteUrl.js';
 
 export default function HomePage() {
   return (
@@ -19,7 +20,7 @@ export default function HomePage() {
             <a className="button button-primary" href="#selected-work">
               Explore my work <span aria-hidden="true">↓</span>
             </a>
-            <a className="text-link" href="/about.html">
+            <a className="text-link" href={siteUrl('about.html')}>
               A little about me <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -120,7 +121,7 @@ export default function HomePage() {
           <p>
             Outside of class and coding, I enjoy getting outdoors, hiking, biking, climbing, and playing games with friends.
           </p>
-          <a className="text-link" href="/about.html">
+          <a className="text-link" href={siteUrl('about.html')}>
             More about me <span aria-hidden="true">↗</span>
           </a>
         </div>
@@ -132,7 +133,7 @@ export default function HomePage() {
           <h2 id="contact-heading">Have something in mind?</h2>
           <p>I’d love to hear about opportunities, collaborations, or anything else you have to share!</p>
         </div>
-        <a className="button button-primary" href="/contact.html">
+        <a className="button button-primary" href={siteUrl('contact.html')}>
           Get in touch <span aria-hidden="true">↗</span>
         </a>
       </section>

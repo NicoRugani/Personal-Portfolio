@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import SiteHeader from './SiteHeader.jsx';
+import siteUrl from '../siteUrl.js';
 
 export default function SiteLayout() {
   return (
@@ -12,7 +13,7 @@ export default function SiteLayout() {
         <Outlet />
       </main>
       <footer className="site-footer section-shell">
-        <a className="footer-name" href="/">
+        <a className="footer-name" href={siteUrl()}>
           Nicholas Rugani
         </a>
         <p>Built with React, Vite, and Love :&#x29;</p>
