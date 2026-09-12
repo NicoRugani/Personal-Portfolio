@@ -1,48 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicholas Rugani — Home</title>
-  <link rel="stylesheet" href="CSS/nav.css" />
-  <link rel="stylesheet" href="CSS/main.css" />
-  <link rel="stylesheet" href="CSS/home.css" />
-</head>
-<body>
-  <nav>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-        <ul> <!-- Navigation Links -->
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-  <main class="wrapper section">
-    <section class="hero stack card">
-      <p class="section-label">Welcome</p>
-      <div class="hero-grid">
-        <div class="hero-text stack">
-          <h1 class = "section-divider">Nicholas Rugani</h1>
-          <p id="welcomeText">
-            Computer Science student building thoughtful web experiences with a strong focus on UX, accessibility, and clean frontend engineering.
-          </p>
-          <p class="hero-links">
-            <a class="hero-link primary" href="projects.html">View Projects</a>
-            <a class="hero-link" href="about.html">About Me</a>
-          </p>
-        </div>
-        <aside class="hero-panel" aria-label="Quick profile metadata">
-          <p><span class="meta-label">Focus</span> Web Development + HCI</p>
-          <p><span class="meta-label">Stack</span> HTML, CSS, JavaScript, Java, Python</p>
-          <p><span class="meta-label">Estimated Graduation</span> 2028</p>
-        </aside>
-      </div>
-    </section>
-  </main>
-  <script src="JavaScript/nav.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Nicholas Rugani - a Computer Science student at Montana State University building useful, accessible software with people in mind."
+    />
+    <meta name="theme-color" content="#f8f9fc" />
+    <title>Nicholas Rugani — Software with people in mind</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript
+      >This page uses JavaScript. You can still visit my <a href="/projects.html">projects</a>,
+      <a href="/about.html">about page</a>, and <a href="/contact.html">contact page</a>.</noscript
+    >
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
