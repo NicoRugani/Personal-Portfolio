@@ -16,7 +16,7 @@ export default function SiteLayout() {
         <a className="footer-name" href={siteUrl()}>
           Nicholas Rugani
         </a>
-        <p>Built with React, Vite, and Love :&#x29;</p>
+        <p>Built with React, and Love :&#x29;</p>
         <a href="https://github.com/NicoRugani">
           GitHub <span aria-hidden="true">↗</span>
         </a>
