@@ -8,10 +8,10 @@ import {resolve} from 'node:path';
 function spaFallback() {
   let outDir;
   return{
-    name: 'spa-4-4-fallback',
+    name: 'spa-404-fallback',
     apply: 'build',
     configResolved(config){
-      outdir = resolve(config.root, config.build.outDir);
+      outDir = resolve(config.root, config.build.outDir);
     },
     closeBundle(){
       copyFileSync(resolve(outDir, 'index.html'), resolve(outDir, '404.html'));
@@ -24,7 +24,7 @@ export default defineConfig({
   // The site is published at https://nicorugani.github.io/Personal-Portfolio/,
   // so built asset URLs must be prefixed with that subpath.
   base: '/Personal-Portfolio/',
-  plugins: [react()],
+  plugins: [react(), spaFallback()],
   build: {
     rollupOptions: {
       input: {

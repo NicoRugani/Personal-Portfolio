@@ -223,6 +223,14 @@ p {
 .primary-navigation .nav-contact {
   color: var(--ink);
 }
+/* NavLink sets aria-current on the matching route, so the current page shows itself
+   without a second source of truth in JS. */
+.primary-navigation a[aria-current='page'] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+}
 .theme-toggle,
 .menu-toggle {
   border: 1px solid var(--line);

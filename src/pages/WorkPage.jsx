@@ -1,10 +1,10 @@
-import usePageTitle from '../usePageTitle';
+import usePageTitle from '../usePageTitle.js';
 
 export default function WorkPage() {
-    usePageTItel('Work');
+    usePageTitle('Work');
     return(
-        <section classname = "section-shell">
-            <p classname = "eyebrow">Work</p>
+        <section className="section-shell">
+            <p className="eyebrow">Work</p>
             <h1>Case Studies</h1>
         </section>
     );
