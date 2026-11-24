@@ -32,7 +32,6 @@ export default function HomePage() {
     <>
       <section className="hero section-shell" aria-labelledby="intro-heading">
         <div className="hero-copy">
-          <p className="eyebrow">Computer science · Psychology</p>
           <h1 id="intro-heading">
             Nicholas Rugani:
             <br /> Building with <span>people in mind.</span>

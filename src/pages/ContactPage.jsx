@@ -7,7 +7,6 @@ export default function ContactPage() {
   return (
     <div className="contact-page section-shell">
       <header className="page-header">
-        <p className="eyebrow">Contact</p>
         <h1>Get in touch.</h1>
         <p className="page-intro">
           Internships, collaborations, or a question about something on this site. I read

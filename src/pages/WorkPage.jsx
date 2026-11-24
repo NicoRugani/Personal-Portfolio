@@ -11,7 +11,6 @@ export default function WorkPage() {
   return (
     <div className="work-page section-shell">
       <header className="page-header">
-        <p className="eyebrow">Work</p>
         <h1>Things I have built.</h1>
         <p className="page-intro">
           Coursework, side projects, and other miscellaneous work, all presented for your enjoyment.
