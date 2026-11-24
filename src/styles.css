@@ -765,3 +765,172 @@ p {
     align-items: center;
   }
 }
+
+/* Case study pages. One template renders every study, so these styles are shared. */
+.case-study {
+  max-width: 48rem;
+  padding-block: 3.5rem 5rem;
+  display: grid;
+  gap: 3.5rem;
+}
+.case-study > section {
+  display: grid;
+  gap: 1rem;
+}
+.case-study h2 {
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--soft);
+}
+.case-study-header {
+  display: grid;
+  gap: 1rem;
+}
+.case-study-tagline {
+  color: var(--muted);
+  font-size: 1.25rem;
+  max-width: 34ch;
+}
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--soft);
+}
+.case-study-meta dt {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.case-study-meta dd {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+}
+.case-study-status {
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 5px 5px 0;
+  background: var(--soft);
+  font-size: 0.9375rem;
+}
+.lead {
+  font-size: 1.125rem;
+  color: var(--ink);
+}
+
+/* Discovery is numbered because the order is the argument. */
+.discovery-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.5rem;
+  counter-reset: phase;
+}
+.discovery-list li {
+  display: grid;
+  gap: 0.75rem;
+}
+.discovery-list h3 {
+  font-size: 1.25rem;
+}
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+.artifact {
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.artifact img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--soft);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.artifact-pending {
+  display: grid;
+  place-items: center;
+  min-height: 11rem;
+  border: 1px dashed var(--muted);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.artifact figcaption {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* The table can outgrow a phone, so it scrolls in its own box rather than the page. */
+.table-scroll {
+  overflow-x: auto;
+}
+.case-study-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  text-align: left;
+}
+.case-study-table caption {
+  padding-bottom: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  text-align: left;
+}
+.case-study-table th,
+.case-study-table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--soft);
+  vertical-align: top;
+}
+.case-study-table thead th {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.case-study-table tbody th {
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.heuristic-list {
+  margin: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.heuristic-list dt {
+  font-weight: 650;
+}
+.heuristic-list dd {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+.next-steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.5rem;
+}
+
+@media (max-width: 540px) {
+  .case-study {
+    gap: 2.5rem;
+    padding-block: 2.5rem 3.5rem;
+  }
+  .case-study-tagline {
+    font-size: 1.0625rem;
+  }
+  .artifact-grid {
+    grid-template-columns: 1fr;
+  }
+}
