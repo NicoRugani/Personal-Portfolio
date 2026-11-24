@@ -5,3 +5,5 @@ dist/
 !.env.example
 .DS_Store
 *.local
+claude.md
+HANDOFF.md

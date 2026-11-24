@@ -1,50 +1,71 @@
 # Nicholas Rugani — Portfolio
 
-## MAJOR UPDATE IN PROGRESS
+A personal portfolio built with React and Vite, published with GitHub Pages at
+**https://nicorugani.github.io/Personal-Portfolio/**
 
-Hello, I'm currently working on a major update to this webpage. More details soon!
-In the mean time the old version will remain active but if you want to keep track of the progress for the update, Check out the 'Refactor' Branch ;
-
-
-## Current Progress
-<img width="1801" height="1000" alt="Screenshot 2026-09-11 at 2 52 52 AM" src="https://github.com/user-attachments/assets/3f430382-73ab-41c6-8b23-c446461dd6c7" />
-
-
-A portfolio migration from static HTML to React.
-The current milestone is **the shared layout and homepage**. The existing
-Projects, About, and Contact pages still work while their replacements are built.
+The site covers three featured projects, two of them as full case studies, alongside an
+about page and a contact form.
 
 ## Run locally
 
-Use Node.js 22.12 or newer (a current LTS release is recommended) and npm.
+Node.js 22.12 or newer.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. The development server listens on localhost.
-Saving a React component or stylesheet updates the page automatically.
+Vite prints the local URL. It includes the `/Personal-Portfolio/` base path, so
+`http://127.0.0.1:5173/` on its own will 404; that is expected.
 
 ```sh
-npm run lint       # Check JavaScript and React patterns
-npm run format     # Format the new React code and project documentation
-npm run build      # Build the React homepage AND the remaining HTML pages
-npm run preview    # Serve the production build locally
+npm run lint       # eslint; this also gates the deploy
+npm run build      # production build into dist/
+npm run preview    # serve the build at http://127.0.0.1:4173/Personal-Portfolio/
+npm run format     # prettier
 ```
-## MAJOR UPDATE IN PROGRESS
 
-Hello, I'm currently working on a major update to this webpage. More details soon!
-In the mean time the old version will remain active but if you want to keep track of the progress for the update, Check out the 'Refactor' Branch ;)
+## How it is put together
 
+```
+index.html                     the single entry point
+src/
+  main.jsx                     mounts React, sets the router basename
+  App.jsx                      routes, plus redirects for the old .html URLs
+  siteUrl.js                   base-path helper for links outside the router
+  useScrollToTop.js            resets scroll between routes, handles #anchors
+  usePageTitle.js              per-route document title
+  styles.css                   all styling, tokens at the top
+  pages/                       Home, Work, CaseStudy, About, Contact, NotFound
+  components/                  SiteLayout, SiteHeader, ProjectCard, ContactForm
+  data/                        projects.js, caseStudies.js, about.js
+  assets/                      case study screenshots
+vite.config.js                 base path and the 404.html fallback
+```
 
-## Current Progress
-<img width="1801" height="1000" alt="Screenshot 2026-09-11 at 2 52 52 AM" src="https://github.com/user-attachments/assets/3f430382-73ab-41c6-8b23-c446461dd6c7" />
-## MAJOR UPDATE IN PROGRESS
+Content lives in `src/data/` and the components render it, so adding a project or a case
+study is a data change rather than a markup change. A project in `projects.js` gains a
+"Read case study" link automatically once a matching slug exists in `caseStudies.js`.
 
-Hello, I'm currently working on a major update to this webpage. More details soon!
-In the mean time the old version will remain active but if you want to keep track of the progress for the update, Check out the 'Refactor' Branch ;)
+## Two things to know before editing
 
+**The base path.** The site is served from a project subpath, not a domain root. Vite
+rewrites asset URLs at build time but never anchor `href`s. Internal links therefore go
+through react-router `<Link>`, which applies the router basename. A bare `href="/about"`
+will build, lint and deploy cleanly, then 404 for real visitors. This check must print
+nothing:
 
-## Current Progress
-<img width="1801" height="1000" alt="Screenshot 2026-09-11 at 2 52 52 AM" src="https://github.com/user-attachments/assets/3f430382-73ab-41c6-8b23-c446461dd6c7" />
+```sh
+grep -rnE 'href="/[a-z]|href="/"' src/ index.html
+```
+
+**The 404 fallback.** GitHub Pages has no server-side rewrite, so a request for a route
+like `/work/planit` matches no file. A Vite plugin copies `dist/index.html` to
+`dist/404.html` at build time, which Pages serves for unmatched paths, letting React
+resolve the real route. Those URLs return a 404 status while rendering the right page.
+
+## Deploy
+
+`.github/workflows/deploy.yml` runs on every push to `main`: install, lint, build, then
+publish `dist/` to Pages. Lint failures block the deploy. `dist/` is gitignored and must
+never be committed.

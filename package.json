@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "lint": "eslint src vite.config.js eslint.config.js",
-    "format": "prettier --write src index.html vite.config.js eslint.config.js README.md docs package.json"
+    "format": "prettier --write src index.html vite.config.js eslint.config.js README.md package.json"
   },
   "dependencies": {
     "react": "^19.3.0",

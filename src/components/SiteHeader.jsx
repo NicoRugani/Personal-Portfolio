@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import siteUrl from '../siteUrl.js';
+import { Link, NavLink } from 'react-router';
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,12 +45,12 @@ export default function SiteHeader() {
   return (
     <header className="site-header" ref={header}>
       <div className="header-inner section-shell">
-        <a className="wordmark" href={siteUrl()} aria-label="Nicholas Rugani, home">
+        <Link className="wordmark" to="/" aria-label="Nicholas Rugani, home">
           <span className="monogram" aria-hidden="true">
             nr.
           </span>
           <span>Nicholas Rugani</span>
-        </a>
+        </Link>
         <button
           className="menu-toggle"
           type="button"
@@ -69,15 +69,15 @@ export default function SiteHeader() {
             if (!header.current.contains(event.relatedTarget)) setMenuOpen(false);
           }}
         >
-          <a href={siteUrl('projects.html')} onClick={() => setMenuOpen(false)}>
-            Projects
-          </a>
-          <a href={siteUrl('about.html')} onClick={() => setMenuOpen(false)}>
+          <NavLink to="/work" onClick={() => setMenuOpen(false)}>
+            Work
+          </NavLink>
+          <NavLink to="/about" onClick={() => setMenuOpen(false)}>
             About
-          </a>
-          <a className="nav-contact" href={siteUrl('contact.html')} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink className="nav-contact" to="/contact" onClick={() => setMenuOpen(false)}>
             Get in touch <span aria-hidden="true">↗</span>
-          </a>
+          </NavLink>
           <button
             className="theme-toggle"
             type="button"
