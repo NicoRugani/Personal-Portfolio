@@ -7,7 +7,7 @@ export default function CaseStudyPage() {
   const { slug } = useParams();
   const study = caseStudies.find((item) => item.slug === slug);
 
-  
+  // Hooks cannot be called conditionally, so this runs before the early return below.
   usePageTitle(study ? study.title : 'Page not found');
 
   if (!study) return <NotFoundPage />;
@@ -32,7 +32,6 @@ export default function CaseStudyPage() {
             <dd>{study.tools.join(', ')}</dd>
           </div>
         </dl>
-        {study.status && <p className="case-study-status">{study.status}</p>}
       </header>
 
       <section className="screens-section" aria-labelledby="screens-heading">
@@ -51,66 +50,21 @@ export default function CaseStudyPage() {
 
       <section aria-labelledby="problem-heading">
         <h2 id="problem-heading">The problem</h2>
-        <p className="lead">{study.problem.statement}</p>
-        <p>{study.problem.context}</p>
+        <p className="lead">{study.problem}</p>
       </section>
 
-      <section aria-labelledby="discovery-heading">
-        <h2 id="discovery-heading">Discovery</h2>
-        <ol className="discovery-list">
-          {study.discovery.map((phase) => (
-            <li key={phase.title}>
-              <p className="eyebrow">{phase.phase}</p>
-              <h3>{phase.title}</h3>
-              <p>{phase.body}</p>
-              <div className="artifact-grid">
-                {phase.artifacts.map((artifact) => (
-                  <figure key={artifact.caption} className="artifact">
-                    {artifact.src ? (
-                      <img src={artifact.src} alt={artifact.alt} loading="lazy" />
-                    ) : (
-                      <div className="artifact-pending">Screenshot to add</div>
-                    )}
-                    <figcaption>{artifact.caption}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </li>
-          ))}
-        </ol>
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">How I approached it</h2>
+        {study.approach.map((paragraph) => (
+          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+        ))}
       </section>
 
-      <section aria-labelledby="testing-heading">
-        <h2 id="testing-heading">User testing</h2>
-        <p>{study.testing.approach}</p>
-        <div className="table-scroll">
-          <table className="case-study-table">
-            <caption>The five tasks every participant attempted</caption>
-            <thead>
-              <tr>
-                <th scope="col">Task</th>
-                <th scope="col">What the participant was asked to do</th>
-                <th scope="col">Goal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {study.testing.tasks.map((task) => (
-                <tr key={task.id}>
-                  <th scope="row">{task.id}</th>
-                  <td>{task.prompt}</td>
-                  <td>{task.goal}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {study.testing.note && <p>{study.testing.note}</p>}
-      </section>
-
-      <section aria-labelledby="heuristics-heading">
-        <h2 id="heuristics-heading">Usability heuristics applied</h2>
+      <section aria-labelledby="solution-heading">
+        <h2 id="solution-heading">How I solved it</h2>
+        <p>{study.solution.body}</p>
         <dl className="heuristic-list">
-          {study.heuristics.map((item) => (
+          {study.solution.heuristics.map((item) => (
             <div key={item.principle}>
               <dt>{item.principle}</dt>
               <dd>{item.applied}</dd>
@@ -118,7 +72,6 @@ export default function CaseStudyPage() {
           ))}
         </dl>
       </section>
-
 
       <Link className="text-link" to="/work">
         <span aria-hidden="true">←</span> All work
