@@ -28,6 +28,15 @@ export default function ContactPage() {
             </li>
             <li>
               <a
+                href="https://www.linkedin.com/in/nicholas-rugani"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://www.credly.com/users/nico-rugani"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,6 +44,7 @@ export default function ContactPage() {
                 Credly <span aria-hidden="true">↗</span>
               </a>
             </li>
+            
           </ul>
         </aside>
       </div>

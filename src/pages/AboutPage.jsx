@@ -16,24 +16,23 @@ export default function AboutPage() {
         </p>
       </header>
 
-      <section aria-labelledby="story-heading">
+      <section aria-labelledby="story-heading" data-reveal>
         <h2 id="story-heading">My story</h2>
         <p>
           I came to computer science for the building and stayed for the people using what gets
           built. Through this pairing of CS and Psych, I'm able to focus on Human-Computer Interaction, and approach it using behavioral analysis, cognitive psychology, and statistics to measure and improve user experience.
         </p>
-      
+
         <p>
-          Outside class I am usually outdoors, hiking, biking or climbing, or playing video games with
-          friends.
+          Outside class I am usually outdoors, hiking, biking or climbing, or still inside, playing video games with friends.
         </p>
       </section>
 
-      <section aria-labelledby="skills-heading">
+      <section aria-labelledby="skills-heading" data-reveal>
         <h2 id="skills-heading">Skills</h2>
         <div className="skill-groups">
           {skillGroups.map((group) => (
-            <div key={group.title}>
+            <div key={group.title} data-reveal="left">
               <h3>{group.title}</h3>
               <ul className="tag-list">
                 {group.skills.map((skill) => (
@@ -45,7 +44,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="education-heading">
+      <section aria-labelledby="education-heading" data-reveal>
         <h2 id="education-heading">Education</h2>
         <p className="lead">{education.school}</p>
         <p>
@@ -63,7 +62,7 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section aria-labelledby="certifications-heading">
+      <section aria-labelledby="certifications-heading" data-reveal>
         <h2 id="certifications-heading">Certifications</h2>
         <p>
           Pearson Certiport in {certifications.certiport.join(', ')}. Cisco certifications in{' '}
@@ -76,7 +75,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="about-cta" aria-labelledby="about-cta-heading">
+      <section className="about-cta" aria-labelledby="about-cta-heading" data-reveal>
         <h2 id="about-cta-heading">Want to see the work?</h2>
         <div className="about-cta-actions">
           <Link className="button button-primary" to="/work">
