@@ -22,9 +22,16 @@ export default function SiteLayout() {
           Nicholas Rugani
         </a>
         <p>Built with React, and Love :&#x29;</p>
-        <a href="https://github.com/NicoRugani">
-          GitHub <span aria-hidden="true">↗</span>
-        </a>
+        {/* Grouped so space-between treats the two as one item. Loose in the footer
+            they were spread as far apart as every other child. */}
+        <div className="footer-links">
+          <a href="https://github.com/NicoRugani">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/nicholas-rugani">
+            LinkedIn <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </footer>
     </>
   );

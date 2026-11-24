@@ -13,6 +13,7 @@
   --page: #fbf8fa;
   --surface: #ffffff;
   --ink: #2b2130;
+  --heading: #2e1240;
   --muted: #63596b;
   --accent: #7a42b0;
   --accent-hover: #632f96;
@@ -35,6 +36,7 @@
   --page: #1d1722;
   --surface: #251d2c;
   --ink: #f0eaf3;
+  --heading: #e8daf6;
   --muted: #b3a4bd;
   --accent: #cfa8ee;
   --accent-hover: #e3c7f6;
@@ -99,6 +101,9 @@ h2,
 h3 {
   font-weight: 650;
   text-wrap: balance;
+  /* Headings carry the purple; body copy stays on --ink so long passages do not read
+     as tinted. */
+  color: var(--heading);
 }
 h1 {
   font-size: clamp(2.55rem, 5.2vw, 4.3rem);
@@ -488,6 +493,12 @@ p {
   color: var(--ink);
   font-weight: 600;
 }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
 .missing-page {
   padding-block: 5rem;
 }
@@ -682,6 +693,10 @@ p {
   .site-footer p {
     order: 3;
     width: 100%;
+  }
+  .footer-links {
+    order: 2;
+    gap: 1rem;
   }
 }
 
