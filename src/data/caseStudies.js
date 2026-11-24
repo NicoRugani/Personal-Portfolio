@@ -9,7 +9,7 @@ import reminders from '../assets/planit/task2-reminder.png';
 import classes from '../assets/planit/task4-add-class.png';
 import calendar from '../assets/planit/calendar.png';
 import settings from '../assets/planit/task5-quiet-hours.png';
-import rabbitholeMap from '../assets/RabbitHole.jpg';
+import rabbitholeMap from '../assets/RabbitHole-Full.jpg';
 
 export const caseStudies = [
   {
@@ -120,8 +120,8 @@ export const caseStudies = [
     screens: [
       {
         src: rabbitholeMap,
-        alt: 'RabbitHole music map with eight connected rock songs from Whitesnake to Asia, beside a panel showing the selected song, a Branch Out direction and the saved library',
-        caption: 'The map. Direction decides how the next branch gets chosen.',
+        alt: 'RabbitHole music map zoomed out, thirteen songs in three branching rows from Journey through Foreigner to Blue Oyster Cult, beside a panel showing the selected song, a Branch Out direction and the saved library',
+        caption: 'The map after branching out several times. The path that got you here is visible.',
         wide: true,
       },
     ],

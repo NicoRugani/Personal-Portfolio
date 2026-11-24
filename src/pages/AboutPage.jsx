@@ -20,7 +20,7 @@ export default function AboutPage() {
         <h2 id="story-heading">My story</h2>
         <p>
           I came to computer science for the building and stayed for the people using what gets
-          built. Psychology is what gives me the ability to understand and solve problems from a human perspective. Cognitive psychology explains why an interface that is technically complete can still feel unusable.
+          built. Through this pairing of CS and Psych, I'm able to focus on Human-Computer Interaction, and approach it using behavioral analysis, cognitive psychology, and statistics to measure and improve user experience.
         </p>
       
         <p>
