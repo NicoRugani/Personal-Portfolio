@@ -552,6 +552,10 @@ p {
     overflow: hidden;
     visibility: hidden;
     flex-wrap: wrap;
+    /* Without this the wrapped lines stretch to fill whatever height the row animation
+       has reached, so every item slides as the box grows and the last one travels the
+       furthest. Pinning them to the top makes the animation a reveal, not a reflow. */
+    align-content: start;
     gap: 0.5rem 1.5rem;
     padding-block: 0;
   }
@@ -622,6 +626,11 @@ p {
   .primary-navigation {
     flex-direction: column;
     align-items: stretch;
+    /* nowrap matters here. A column flex container that is allowed to wrap will spill
+       its items into side-by-side columns whenever its height is smaller than their
+       combined height, which is exactly what happens while the row is opening or
+       closing. That was the horizontal flash. */
+    flex-wrap: nowrap;
     gap: 0.1rem;
   }
   .primary-navigation a {
@@ -1043,6 +1052,24 @@ p {
   }
 }
 
+/* Opening the mobile menu: the row appears and the links arrive one beat apart. Scoped
+   to no-preference so anyone who asked their system to reduce motion gets the instant
+   version instead.
+
+   Two things were tried and removed. A clip-path circle growing from behind the toggle:
+   its radius and origin are percentages of the element's own box, and the box was being
+   resized at the same time, so the mask recomputed against a different size every frame
+   and tore.
+
+   The row's height transition caused a flash too, but the height was not the culprit:
+   the nav is a column flex container and still had flex-wrap:wrap, so every frame where
+   the box was shorter than its contents spilled the items into side-by-side columns.
+   flex-wrap:nowrap in the 540px block is what actually fixed that.
+
+   These are keyframes rather than transitions on purpose. The nav flips from
+   visibility:hidden to visible in the same frame the links would start moving, and a
+   transition on an element that was not rendered a frame earlier gets skipped, so all
+   four arrived at once. An animation runs either way. */
 @media (prefers-reduced-motion: no-preference) and (max-width: 820px) {
   .nav-shell {
     transition: grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1);
