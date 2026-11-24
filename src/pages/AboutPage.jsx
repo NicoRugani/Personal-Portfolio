@@ -8,7 +8,6 @@ export default function AboutPage() {
   return (
     <div className="about-page section-shell">
       <header className="page-header">
-        <p className="eyebrow">About</p>
         <h1>Computer science, with Psychology.</h1>
         <p className="page-intro">
           I am a Computer Science student at Montana State University, pairing the degree with a
