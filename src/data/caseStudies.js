@@ -9,6 +9,7 @@ import reminders from '../assets/planit/task2-reminder.png';
 import classes from '../assets/planit/task4-add-class.png';
 import calendar from '../assets/planit/calendar.png';
 import settings from '../assets/planit/task5-quiet-hours.png';
+import rabbitholeMap from '../assets/RabbitHole.jpg';
 
 export const caseStudies = [
   {
@@ -103,6 +104,68 @@ export const caseStudies = [
           principle: 'Aesthetic and minimalist design',
           applied:
             'One card per course, three fields per item, and nothing on Home that does not help answer what is due next.',
+        },
+      ],
+    },
+  },
+  {
+    slug: 'rabbithole',
+    number: '02',
+    title: 'RabbitHole',
+    tagline: 'Music discovery as a map you build, not a feed you scroll.',
+    role: 'Solo: product design, frontend and backend',
+    timeline: '2026 · in progress',
+    tools: ['React', 'React Flow', 'Vite', 'Node and Express', 'Last.fm API', 'iTunes Search API'],
+
+    screens: [
+      {
+        src: rabbitholeMap,
+        alt: 'RabbitHole music map with eight connected rock songs from Whitesnake to Asia, beside a panel showing the selected song, a Branch Out direction and the saved library',
+        caption: 'The map. Direction decides how the next branch gets chosen.',
+        wide: true,
+      },
+    ],
+
+    problem:
+      'Searching for new music can actually be very difficult. A giant list of recommendations or a random DJ mix result in a lot of songs that aren\'t interesting, and for the ones that are, it\'s hard to find others similar. A listener needs a way to explore music that is both guided and self directed, so they can find exactly what they like and how their tatste got them there.',
+
+    approach: [
+      'I started by finding out what the music APIs could give me. Last.fm similarity scores come from users  listening behaviour, so that became the source of candidates, with iTunes supplying artwork, thirty second previews and a stable track id.',
+      'With no tempo, pitch, melody, or anything of the sort to rank on, the listener has to steer themselves another way. A graph where every song is a node, and the edges are the similarity scores is a great way to vizually represent your search. The listener can branch out from any song, and the next node is chosen from the candidates with the highest similarity score in a direction.',
+    ],
+
+    solution: {
+      body:
+        'RabbitHole draws your listening as a graph you can drag, zoom and branch from. Select a song, pick a direction such as Branch Out, and the recommendations change to match; adding one draws the edge. The map persists between sessions, so a path survives closing the tab.',
+      heuristics: [
+        {
+          principle: 'Recognition rather than recall',
+          applied:
+            'The graph is the memory. You never have to reconstruct how you reached a song, because the path that got you there is on screen.',
+        },
+        {
+          principle: 'Visibility of system status',
+          applied:
+            'The selected song stays named in its own panel, and the chosen direction explains in a line what it will do before you commit to it.',
+        },
+        {
+          principle: 'User control and freedom',
+          applied:
+            'Deselect backs out of a choice, and any earlier node can be selected and branched from again, so following a dead end costs nothing.',
+        },
+        {
+          principle: 'Help users recover',
+          applied: 'Fit Web reframes the entire map in one click, for when panning and zooming have left you lost.',
+        },
+        {
+          principle: 'Help and documentation',
+          applied:
+            'The canvas carries its own instructions along the bottom edge, where someone looking at an unfamiliar interface is already looking.',
+        },
+        {
+          principle: 'Aesthetic and minimalist design',
+          applied:
+            'A node shows genre, title, artist and album year, and nothing else. Any more and the map stops being readable at a glance.',
         },
       ],
     },

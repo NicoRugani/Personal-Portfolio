@@ -40,7 +40,7 @@ export default function CaseStudyPage() {
         </h2>
         <div className="screens">
           {study.screens.map((screen) => (
-            <figure key={screen.caption}>
+            <figure key={screen.caption} className={screen.wide ? 'is-wide' : undefined}>
               <img src={screen.src} alt={screen.alt} loading="lazy" />
               <figcaption>{screen.caption}</figcaption>
             </figure>

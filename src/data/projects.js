@@ -2,7 +2,7 @@
 // surfaces on the homepage and in the Featured row on /work. A project links to a case
 // study automatically once a matching slug exists in caseStudies.js.
 import akinator from '../assets/Akinator.png';
-import rabbithole from '../assets/RabbitHole.png';
+import rabbithole from '../assets/RabbitHole.jpg';
 import planit from '../assets/planit/home.png';
 
 export const projects = [
@@ -27,7 +27,7 @@ export const projects = [
     tags: ['React', 'React Flow', 'Node', 'Last.fm API'],
     image: rabbithole,
     imageAlt:
-      'RabbitHole music map with three connected song nodes on a dark canvas, beside a selected song and recommendations panel',
+      'RabbitHole music map with eight connected rock songs on a dark canvas, beside a selected song panel and saved library',
     sourceUrl: 'https://github.com/NicoRugani/RabbitHole-Spacial-Music-Finder',
   },
   {

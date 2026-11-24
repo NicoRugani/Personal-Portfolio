@@ -783,6 +783,14 @@ p {
   font-size: 0.8125rem;
   text-align: center;
 }
+/* Phone screenshots sit at 13rem; a landscape capture needs the full column or it
+   becomes unreadable at that width. */
+.screens figure.is-wide {
+  flex: 1 1 100%;
+}
+.screens figure.is-wide img {
+  border: 1px solid var(--soft);
+}
 
 /* Visible to screen readers, not on screen. The screens section needs a heading for
    document structure without putting a redundant label above the images. */
