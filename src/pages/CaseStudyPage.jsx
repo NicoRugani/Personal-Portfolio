@@ -35,6 +35,20 @@ export default function CaseStudyPage() {
         {study.status && <p className="case-study-status">{study.status}</p>}
       </header>
 
+      <section className="screens-section" aria-labelledby="screens-heading">
+        <h2 className="visually-hidden" id="screens-heading">
+          The product
+        </h2>
+        <div className="screens">
+          {study.screens.map((screen) => (
+            <figure key={screen.caption}>
+              <img src={screen.src} alt={screen.alt} loading="lazy" />
+              <figcaption>{screen.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section aria-labelledby="problem-heading">
         <h2 id="problem-heading">The problem</h2>
         <p className="lead">{study.problem.statement}</p>
@@ -105,15 +119,6 @@ export default function CaseStudyPage() {
         </dl>
       </section>
 
-      <section aria-labelledby="outcome-heading">
-        <h2 id="outcome-heading">Where it stands</h2>
-        <p>{study.outcome.body}</p>
-        <ul className="next-steps">
-          {study.outcome.nextSteps.map((step) => (
-            <li key={step}>{step}</li>
-          ))}
-        </ul>
-      </section>
 
       <Link className="text-link" to="/work">
         <span aria-hidden="true">←</span> All work
