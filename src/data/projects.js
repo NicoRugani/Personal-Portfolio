@@ -44,6 +44,36 @@ export const projects = [
     sourceUrl: 'https://github.com/NicoRugani/BST_Akinator',
   },
   {
+    id: 'job-bot',
+    featured: false,
+    category: 'Automation and LLMs',
+    title: 'Internship Job Bot',
+    blurb:
+      'Scrapes four internship boards plus the Greenhouse, Lever and Ashby pages of every company they mention, dedupes by employer job ID, then scores each posting against my profile with local embeddings first and Gemini second. Strong matches land in Notion and push to my phone, all on a free GitHub Actions schedule.',
+    tags: ['Python', 'Gemini API', 'GitHub Actions'],
+    sourceUrl: 'https://github.com/NicoRugani/Job_Bot',
+  },
+  {
+    id: 'monster-battle',
+    featured: false,
+    category: 'Software engineering',
+    title: 'Monster Battle Game',
+    blurb:
+      'A semester long team project for ESOF 322, built across four checkpoints behind an interface driven model layer. I owned the Monster and EvolutionManager classes, the monster factory, and the REST controllers that put battles, players and the leaderboard on the web.',
+    tags: ['Java 21', 'Javalin', 'JUnit 5'],
+    sourceUrl: 'https://github.com/NicoRugani/Monster-Battle-Game-ESOF332',
+  },
+  {
+    id: 'bad-sonik',
+    featured: false,
+    category: 'Game development',
+    title: 'Bad Sonik',
+    blurb:
+      'A 2D infinite runner I built while teaching myself Godot, so I would have something to show at the end of year party. Catch the falling rings before they hit the ground, miss too many and it is over. Refactored later for the code quality, lives system and menus included.',
+    tags: ['Godot', 'C#', 'GDScript'],
+    sourceUrl: 'https://github.com/NicoRugani/Bad-Sonik',
+  },
+  {
     id: 'battle-sim',
     featured: false,
     category: 'Data structures',
