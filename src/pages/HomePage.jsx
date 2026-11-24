@@ -1,6 +1,6 @@
+import { Link } from 'react-router';
 import ProjectCard from '../components/ProjectCard.jsx';
 import { projects } from '../data/projects.js';
-import siteUrl from '../siteUrl.js';
 
 export default function HomePage() {
   return (
@@ -13,16 +13,16 @@ export default function HomePage() {
             <br /> Building with <span>people in mind.</span>
           </h1>
           <p className="hero-description">
-            Hello! I'm Nicholas &#x28;call me Nico&#x29;, a Computer Science student at Montana State University. I care about
+            Hello! I'm Nicholas, a Computer Science student at Montana State University. I care about
             thoughtful code and making the web more useful, intuitive, and accessible.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#selected-work">
               Explore my work <span aria-hidden="true">↓</span>
             </a>
-            <a className="text-link" href={siteUrl('about.html')}>
+            <Link className="text-link" to="/about">
               A little about me <span aria-hidden="true">↗</span>
-            </a>
+            </Link>
           </div>
         </div>
         <aside className="profile-note" aria-label="At a glance">
@@ -58,14 +58,16 @@ export default function HomePage() {
             <p className="eyebrow">Selected work</p>
             <h2 id="work-heading">Ideas, put to code.</h2>
           </div>
-          <a className="text-link" href="https://github.com/nicorugani" target="_blank" rel="noopener noreferrer">
-            All projects <span aria-hidden="true">↗</span>
-          </a>
+          <Link className="text-link" to="/work">
+            All work <span aria-hidden="true">→</span>
+          </Link>
         </div>
-        <div className="project-grid"> {/* iterates through the projects array and renders the project card component for each project*/}
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="featured-grid">
+          {projects
+            .filter((project) => project.featured)
+            .map((project) => (
+              <ProjectCard key={project.id} project={project} featured />
+            ))}
         </div>
       </section>
 
@@ -121,9 +123,9 @@ export default function HomePage() {
           <p>
             Outside of class and coding, I enjoy getting outdoors, hiking, biking, climbing, and playing games with friends.
           </p>
-          <a className="text-link" href={siteUrl('about.html')}>
-            More about me <span aria-hidden="true">↗</span>
-          </a>
+          <Link className="text-link" to="/about">
+            More about me <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
@@ -133,9 +135,9 @@ export default function HomePage() {
           <h2 id="contact-heading">Have something in mind?</h2>
           <p>I’d love to hear about opportunities, collaborations, or anything else you have to share!</p>
         </div>
-        <a className="button button-primary" href={siteUrl('contact.html')}>
-          Get in touch <span aria-hidden="true">↗</span>
-        </a>
+        <Link className="button button-primary" to="/contact">
+          Get in touch <span aria-hidden="true">→</span>
+        </Link>
       </section>
     </>
   );

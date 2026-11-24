@@ -16,8 +16,6 @@
   --accent-ink: #ffffff;
   --line: #2a1838;
   --soft: #edf1fa;
-  --diagram-line: #88898b;
-  --diagram-fill: #dfe7fb;
   color: var(--ink);
   background: var(--page);
   font-synthesis: none;
@@ -36,8 +34,6 @@
   --accent-ink: #12203e;
   --line: #ffffff;
   --soft: #2c1f3d;
-  --diagram-line: #f3f4f6;
-  --diagram-fill: #4b395e;
 }
 
 * {
@@ -342,57 +338,6 @@ p {
   overflow: hidden;
   background: var(--surface);
 }
-.project-preview {
-  background: var(--soft);
-  border-bottom: 1px solid var(--line);
-}
-.project-preview svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.project-preview svg text {
-  fill: var(--ink);
-  font:
-    20px ui-monospace,
-    SFMono-Regular,
-    Consolas,
-    monospace;
-}
-.project-preview svg .diagram-caption {
-  fill: var(--muted);
-  font-size: 18px;
-}
-.project-preview figcaption {
-  color: var(--muted);
-  font-size: 0.8125rem;
-  padding: 0 1rem 0.9rem;
-}
-.diagram-line,
-.diagram-arrow {
-  fill: none;
-  stroke: var(--diagram-line);
-  stroke-width: 2;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-.diagram-node {
-  fill: var(--surface);
-  stroke: var(--diagram-line);
-  stroke-width: 2;
-}
-.diagram-node.is-highlighted {
-  fill: var(--diagram-fill);
-  stroke: var(--accent);
-}
-.diagram-leaf {
-  fill: var(--diagram-fill);
-  stroke: var(--diagram-line);
-  stroke-width: 2;
-}
-.diagram-block {
-  fill: var(--diagram-fill);
-}
 .project-card-body {
   padding: 1.5rem;
   display: flex;
@@ -405,10 +350,6 @@ p {
   gap: 0.6rem;
   font-size: 0.875rem;
   margin-bottom: 0.8rem;
-}
-.project-category span {
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  color: var(--accent);
 }
 .project-description {
   font-size: 1rem;
@@ -628,20 +569,6 @@ p {
   .project-grid {
     grid-template-columns: 1fr;
   }
-  .project-card {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-  }
-  .project-preview {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 0;
-    border-right: 1px solid var(--line);
-  }
-  .project-preview figcaption {
-    font-size: 0.75rem;
-  }
   .project-card-body {
     padding: 1.5rem;
   }
@@ -710,13 +637,6 @@ p {
   }
   .project-card {
     display: flex;
-  }
-  .project-preview {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .project-preview figcaption {
-    font-size: 0.8125rem;
   }
   .project-card-body {
     padding: 1.5rem;
@@ -886,3 +806,53 @@ p {
     flex: 0 1 9rem;
   }
   }
+
+/* Work page. Featured cards carry a real screenshot; everything else is typographic. */
+.work-page {
+  display: grid;
+  gap: 3.5rem;
+  padding-block: 3.5rem 5rem;
+}
+.work-page > section {
+  display: grid;
+  gap: 1.5rem;
+}
+.page-header {
+  display: grid;
+  gap: 0.75rem;
+}
+.page-intro {
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 1.0625rem;
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.3rem;
+}
+.project-shot {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  object-position: top center;
+  border-bottom: 1px solid var(--line);
+  background: var(--soft);
+}
+.project-card.is-featured .project-description {
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 1050px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-shot {
+    aspect-ratio: 16 / 9;
+  }
+}
