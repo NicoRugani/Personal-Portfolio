@@ -13,7 +13,7 @@ export default function HomePage() {
             <br /> Building with <span>people in mind.</span>
           </h1>
           <p className="hero-description">
-            Hello! I'm Nicholas, a Computer Science student at Montana State University. I care about
+            Hello! I'm Nicholas, a Computer Science & Psychology student at Montana State University. I care about
             thoughtful code and making the web more useful, intuitive, and accessible.
           </p>
           <div className="hero-actions">
@@ -26,7 +26,7 @@ export default function HomePage() {
           </div>
         </div>
         <aside className="profile-note" aria-label="At a glance">
-          <p className="profile-statement">The person <span>behind the code</span></p>
+          <p className="profile-statement"> <span>Currently</span></p>
           <dl>
             <div>
               <dt>Studying</dt>
@@ -73,7 +73,7 @@ export default function HomePage() {
 
       <section className="approach-section section-shell" aria-labelledby="approach-heading">
         <div className="approach-intro">
-          <p className="eyebrow">How I approach problems</p>
+          <p className="eyebrow">Problem Solving Phlisophy</p>
           <h2 id="approach-heading">
             Good software starts
             <br />
@@ -98,8 +98,8 @@ export default function HomePage() {
               02
             </span>
             <div>
-              <h3>Build with intention</h3>
-              <p>Choose structures and interactions that serve a purpose.</p>
+              <h3>Build intentionally</h3>
+              <p>Choose structures and interactions that serve a purpose and solve the problem.</p>
             </div>
           </li>
           <li>
@@ -121,7 +121,7 @@ export default function HomePage() {
         <div>
           <h2 id="about-heading">Curiosity Continues.</h2>
           <p>
-            Outside of class and coding, I enjoy getting outdoors, hiking, biking, climbing, and playing games with friends.
+            Outside of class and coding, I enjoy getting outdoors, hiking, biking, climbing, and playing video games with friends.
           </p>
           <Link className="text-link" to="/about">
             More about me <span aria-hidden="true">→</span>

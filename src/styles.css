@@ -864,3 +864,159 @@ p {
     aspect-ratio: 16 / 9;
   }
 }
+
+/* About and Contact share the page-header and section rhythm from the work page. */
+.about-page,
+.contact-page {
+  max-width: 48rem;
+  display: grid;
+  gap: 3.5rem;
+  padding-block: 3.5rem 5rem;
+}
+.about-page > section,
+.contact-page > section {
+  display: grid;
+  gap: 1rem;
+}
+.about-page h2,
+.contact-page h2 {
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--soft);
+}
+.about-page h3 {
+  margin-top: 0.5rem;
+  font-size: 1.0625rem;
+}
+.muted-line {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.skill-groups {
+  display: grid;
+  gap: 1.75rem;
+}
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tag-list li {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--soft);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.875rem;
+}
+.course-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+.course-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.9375rem;
+}
+.course-code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.about-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Contact. The form leads; the alternatives sit beside it so a failed send is not a
+   dead end. */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+.field label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.field input,
+.field textarea {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  min-height: 44px;
+}
+.field textarea {
+  resize: vertical;
+}
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.contact-form button {
+  justify-self: start;
+}
+.contact-form button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+.form-status:empty {
+  display: none;
+}
+.form-status {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--muted);
+  border-radius: 0 5px 5px 0;
+  background: var(--soft);
+  font-size: 0.9375rem;
+}
+.form-status.is-ok {
+  border-left-color: #1f8a4c;
+}
+.form-status.is-error {
+  border-left-color: #c0392b;
+}
+.contact-aside h2 {
+  font-size: 1.0625rem;
+}
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (max-width: 760px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-page,
+  .contact-page {
+    gap: 2.5rem;
+    padding-block: 2.5rem 3.5rem;
+  }
+}
