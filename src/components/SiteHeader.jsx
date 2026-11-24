@@ -61,31 +61,36 @@ export default function SiteHeader() {
         >
           {menuOpen ? 'Close' : 'Menu'}
         </button>
-        <nav
-          id="primary-navigation"
-          className={'primary-navigation' + (menuOpen ? ' is-open' : '')}
-          aria-label="Main navigation"
-          onBlur={(event) => {
-            if (!header.current.contains(event.relatedTarget)) setMenuOpen(false);
-          }}
-        >
-          <NavLink to="/work" onClick={() => setMenuOpen(false)}>
-            Work
-          </NavLink>
-          <NavLink to="/about" onClick={() => setMenuOpen(false)}>
-            About
-          </NavLink>
-          <NavLink className="nav-contact" to="/contact" onClick={() => setMenuOpen(false)}>
-            Get in touch <span aria-hidden="true">↗</span>
-          </NavLink>
-          <button
-            className="theme-toggle"
-            type="button"
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        {/* The shell exists only so the open and close can be animated: a height
+            transition needs a wrapper to run on. It is display:contents above the mobile
+            breakpoint, so it does not affect the desktop layout at all. */}
+        <div className={'nav-shell' + (menuOpen ? ' is-open' : '')}>
+          <nav
+            id="primary-navigation"
+            className="primary-navigation"
+            aria-label="Main navigation"
+            onBlur={(event) => {
+              if (!header.current.contains(event.relatedTarget)) setMenuOpen(false);
+            }}
           >
-            {theme === 'light' ? 'Dark mode' : 'Light mode'}
-          </button>
-        </nav>
+            <NavLink to="/work" onClick={() => setMenuOpen(false)}>
+              Work
+            </NavLink>
+            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
+              About
+            </NavLink>
+            <NavLink className="nav-contact" to="/contact" onClick={() => setMenuOpen(false)}>
+              Get in touch <span aria-hidden="true">↗</span>
+            </NavLink>
+            <button
+              className="theme-toggle"
+              type="button"
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            >
+              {theme === 'light' ? 'Dark mode' : 'Light mode'}
+            </button>
+          </nav>
+        </div>
       </div>
     </header>
   );
