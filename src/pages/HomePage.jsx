@@ -1,8 +1,33 @@
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router';
+import CaseStudyOverlay from '../components/CaseStudyOverlay.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
+import { caseStudies } from '../data/caseStudies.js';
 import { projects } from '../data/projects.js';
 
 export default function HomePage() {
+  const [expanded, setExpanded] = useState(null);
+
+  // The card's rect is captured at click time; the overlay grows out of exactly where
+  // the card was sitting. cardId lets it re-measure on close, in case the page moved.
+  const handleExpand = useCallback((slug, cardElement) => {
+    const study = caseStudies.find((item) => item.slug === slug);
+    if (!study) return;
+    const rect = cardElement.getBoundingClientRect();
+    setExpanded({
+      study,
+      originRect: {
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        cardId: cardElement.id,
+      },
+    });
+  }, []);
+
+  const handleClose = useCallback(() => setExpanded(null), []);
+
   return (
     <>
       <section className="hero section-shell" aria-labelledby="intro-heading">
@@ -54,11 +79,11 @@ export default function HomePage() {
         aria-labelledby="work-heading"
       >
         <div className="section-heading">
-          <div>
+          <div data-reveal>
             <p className="eyebrow">Selected work</p>
             <h2 id="work-heading">Ideas, put to code.</h2>
           </div>
-          <Link className="text-link" to="/work">
+          <Link className="text-link" to="/work" data-reveal>
             All work <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -66,13 +91,18 @@ export default function HomePage() {
           {projects
             .filter((project) => project.featured)
             .map((project) => (
-              <ProjectCard key={project.id} project={project} featured />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                featured
+                onExpand={handleExpand}
+              />
             ))}
         </div>
       </section>
 
       <section className="approach-section section-shell" aria-labelledby="approach-heading">
-        <div className="approach-intro">
+        <div className="approach-intro" data-reveal>
           <p className="eyebrow">Problem Solving Phlisophy</p>
           <h2 id="approach-heading">
             Good software starts
@@ -84,7 +114,7 @@ export default function HomePage() {
           </p>
         </div>
         <ol className="approach-list">
-          <li>
+          <li data-reveal="left">
             <span className="step-number" aria-hidden="true">
               01
             </span>
@@ -93,7 +123,7 @@ export default function HomePage() {
               <p>Start with what people need to do and where the experience gets in their way.</p>
             </div>
           </li>
-          <li>
+          <li data-reveal="left">
             <span className="step-number" aria-hidden="true">
               02
             </span>
@@ -102,7 +132,7 @@ export default function HomePage() {
               <p>Choose structures and interactions that serve a purpose and solve the problem.</p>
             </div>
           </li>
-          <li>
+          <li data-reveal="left">
             <span className="step-number" aria-hidden="true">
               03
             </span>
@@ -116,29 +146,24 @@ export default function HomePage() {
         </ol>
       </section>
 
-      <section className="about-strip section-shell" aria-labelledby="about-heading">
-        <p className="eyebrow">Away from the keyboard</p>
-        <div>
-          <h2 id="about-heading">Curiosity Continues.</h2>
-          <p>
-            Outside of class and coding, I enjoy getting outdoors, hiking, biking, climbing, and playing video games with friends.
-          </p>
-          <Link className="text-link" to="/about">
-            More about me <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </section>
-
       <section className="contact-section section-shell" aria-labelledby="contact-heading">
-        <div>
+        <div data-reveal>
           <p className="eyebrow">Let’s connect</p>
           <h2 id="contact-heading">Have something in mind?</h2>
           <p>I’d love to hear about opportunities, collaborations, or anything else you have to share!</p>
         </div>
-        <Link className="button button-primary" to="/contact">
+        <Link className="button button-primary" to="/contact" data-reveal>
           Get in touch <span aria-hidden="true">→</span>
         </Link>
       </section>
+
+      {expanded && (
+        <CaseStudyOverlay
+          study={expanded.study}
+          originRect={expanded.originRect}
+          onClose={handleClose}
+        />
+      )}
     </>
   );
 }

@@ -4,8 +4,8 @@ import { useLocation } from 'react-router';
 // Timing, tuned against the prototype. TRIGGER is what stops a reveal finishing before
 // the reader has actually seen it: the element has to climb this far up the viewport
 // before anything starts.
-const TRIGGER = 40; // percent up from the bottom edge
-const HOLD = 75; // ms before the first item in a group moves
+const TRIGGER = 30; // percent up from the bottom edge
+const HOLD = 60; // ms before the first item in a group moves
 const STEP = 120; // ms between items in the same group
 
 export default function useReveal() {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { caseStudies } from '../data/caseStudies.js';
 
-export default function ProjectCard({ project, featured = false }) {
+export default function ProjectCard({ project, featured = false, onExpand }) {
   // The card offers a case study only once one actually exists, so adding an entry to
   // caseStudies.js is all it takes to switch a project over from linking out to GitHub.
   const hasCaseStudy = caseStudies.some((study) => study.slug === project.id);
@@ -10,6 +10,8 @@ export default function ProjectCard({ project, featured = false }) {
     <article
       className={featured ? 'project-card is-featured' : 'project-card'}
       aria-labelledby={project.id + '-title'}
+      data-reveal="left"
+      id={project.id + '-card'}
     >
       {featured && project.image && (
         <img className="project-shot" src={project.image} alt={project.imageAlt} loading="lazy" />
@@ -25,7 +27,17 @@ export default function ProjectCard({ project, featured = false }) {
         </ul>
         <div className="project-actions">
           {hasCaseStudy && (
-            <Link to={'/work/' + project.id}>
+            <Link
+              to={'/work/' + project.id}
+              onClick={(event) => {
+                // Let the browser keep the ways people deliberately open a new tab, and
+                // fall back to plain navigation wherever no expander was supplied.
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+                if (!onExpand) return;
+                event.preventDefault();
+                onExpand(project.id, event.currentTarget.closest('.project-card'));
+              }}
+            >
               Read case study <span aria-hidden="true">→</span>
             </Link>
           )}

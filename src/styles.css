@@ -71,10 +71,16 @@ a {
 }
 a:hover {
   color: var(--accent-hover);
-  transform: scale(1.05);
 }
-a:active {
-  transform: scale(0.95);
+/* Scaling was previously on every a:hover, which nudged body text around whenever the
+   cursor crossed an inline link. It belongs only on links that read as controls. */
+.button:hover,
+.project-actions a:hover {
+  transform: scale(1.03);
+}
+.button:active,
+.project-actions a:active {
+  transform: scale(0.97);
 }
 button:focus-visible,
 a:focus-visible {
@@ -444,23 +450,6 @@ p {
 .approach-list p {
   margin-top: 0.5rem;
 }
-.about-strip {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
-  gap: 1rem;
-  padding-block: 4rem;
-}
-.about-strip > .eyebrow {
-  padding-top: 0;
-}
-.about-strip p:not(.eyebrow) {
-  margin-top: 1rem;
-  max-width: 58ch;
-}
-.about-strip .text-link {
-  margin-top: 1.2rem;
-}
 .contact-section {
   display: flex;
   align-items: center;
@@ -609,10 +598,6 @@ p {
   .approach-section {
     gap: 2rem;
   }
-  .about-strip {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
   .contact-section {
     align-items: flex-start;
     flex-direction: column;
@@ -685,9 +670,6 @@ p {
   }
   .approach-section {
     grid-template-columns: 1fr;
-    padding-block: 3rem;
-  }
-  .about-strip {
     padding-block: 3rem;
   }
   .contact-section {
@@ -1134,4 +1116,191 @@ html[data-motion='on'] [data-reveal='left'] {
 html[data-motion='on'] [data-reveal].is-in {
   opacity: 1;
   transform: none;
+}
+
+/* Interaction that does not depend on scrolling, so it never re-triggers the way a
+   reveal would. This is what keeps the page feeling responsive after the entrance. */
+/* The lift uses `translate`, not `transform`. The reveal above owns transform on these
+   same cards, and one property cannot carry two animations with different durations:
+   sharing it gave the hover a 1.4s lift and stopped the border and shadow animating at
+   all. `translate` is a separate property that composes with transform. */
+.project-card {
+  transition:
+    translate 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+/* focus-within so a keyboard user tabbing to the card's link gets the same feedback. */
+.project-card:hover,
+.project-card:focus-within {
+  translate: 0 -5px;
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px -22px rgba(43, 33, 48, 0.55);
+}
+/* A card matches the generic reveal selector too, which is more specific than
+   .project-card and would replace the transition list above. Restate both sets here. */
+html[data-motion='on'] .project-card[data-reveal] {
+  transition:
+    opacity var(--reveal-dur) cubic-bezier(0.22, 1, 0.36, 1),
+    transform var(--reveal-dur) cubic-bezier(0.22, 1, 0.36, 1),
+    translate 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.text-link {
+  position: relative;
+}
+.text-link:hover {
+  text-decoration: none;
+}
+.text-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The colour change stays. Removing the feedback entirely would be worse than
+     removing the movement. */
+  .project-card,
+  html[data-motion='on'] .project-card[data-reveal] {
+    transition: border-color 260ms ease;
+  }
+  .project-card:hover,
+  .project-card:focus-within {
+    translate: none;
+  }
+  .text-link::after {
+    transition: none;
+  }
+}
+
+/* Case study overlay. Portalled to <body>, so it sits outside #root and the whole app
+   can be marked inert behind it. */
+body.has-overlay {
+  overflow: hidden;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: max(1rem, env(safe-area-inset-top, 0px)) 1rem max(1rem, env(safe-area-inset-bottom, 0px));
+}
+.overlay-scrim {
+  position: absolute;
+  inset: 0;
+  /* The colour matters on its own: if backdrop-filter is unsupported it is the only
+     thing separating the panel from the page. */
+  background: color-mix(in srgb, var(--page) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  animation: overlay-scrim-in 320ms ease both;
+}
+@keyframes overlay-scrim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.overlay.is-closing .overlay-scrim {
+  animation: overlay-scrim-in 300ms ease reverse both;
+}
+.overlay-panel {
+  position: relative;
+  width: min(820px, 100%);
+  height: min(92vh, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transform-origin: top left;
+  box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.7);
+}
+.overlay-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.overlay-body {
+  max-width: none;
+  padding: clamp(1.4rem, 3vw, 2.6rem);
+  padding-top: 3.4rem;
+}
+.overlay-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.overlay-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+/* Keyframes rather than transitions: these children are created in the same frame they
+   would start moving, and a transition from a state that was never rendered is skipped. */
+@keyframes overlay-content-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.overlay-body > * {
+  opacity: 0;
+}
+.overlay-panel.is-settled .overlay-body > * {
+  animation: overlay-content-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.overlay-panel.is-settled .overlay-body > :nth-child(2) { animation-delay: 60ms; }
+.overlay-panel.is-settled .overlay-body > :nth-child(3) { animation-delay: 120ms; }
+.overlay-panel.is-settled .overlay-body > :nth-child(4) { animation-delay: 180ms; }
+.overlay-panel.is-settled .overlay-body > :nth-child(5) { animation-delay: 240ms; }
+.overlay-panel.is-settled .overlay-body > :nth-child(6) { animation-delay: 300ms; }
+
+@media (max-width: 640px) {
+  /* Blurring a whole page is GPU work. A smaller radius keeps older phones smooth. */
+  .overlay-scrim {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .overlay {
+    padding: 0;
+  }
+  .overlay-panel {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay-scrim,
+  .overlay-panel.is-settled .overlay-body > * {
+    animation: none;
+  }
+  .overlay-body > * {
+    opacity: 1;
+  }
 }
