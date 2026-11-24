@@ -1043,45 +1043,38 @@ p {
   }
 }
 
-/* Opening the mobile menu: a circular mask grows from behind the toggle while the row
-   makes room, then the links arrive one beat apart. Scoped to no-preference so anyone
-   who asked their system to reduce motion gets the instant version instead. */
 @media (prefers-reduced-motion: no-preference) and (max-width: 820px) {
   .nav-shell {
     transition: grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .primary-navigation {
-    /* The origin sits behind the Menu button, roughly 38px in from the right edge. */
-    clip-path: circle(0% at calc(100% - 38px) 0);
     transition:
-      clip-path 420ms cubic-bezier(0.22, 1, 0.36, 1),
       padding-block 320ms cubic-bezier(0.22, 1, 0.36, 1),
       visibility 320ms;
   }
-  .nav-shell.is-open .primary-navigation {
-    clip-path: circle(150% at calc(100% - 38px) 0);
-  }
-  .primary-navigation > * {
-    opacity: 0;
-    transform: translateY(6px);
-    transition:
-      opacity 260ms ease,
-      transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  @keyframes nav-item-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
   .nav-shell.is-open .primary-navigation > * {
-    opacity: 1;
-    transform: translateY(0);
+    animation: nav-item-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .nav-shell.is-open .primary-navigation > :nth-child(1) {
-    transition-delay: 90ms;
+    animation-delay: 40ms;
   }
   .nav-shell.is-open .primary-navigation > :nth-child(2) {
-    transition-delay: 150ms;
+    animation-delay: 100ms;
   }
   .nav-shell.is-open .primary-navigation > :nth-child(3) {
-    transition-delay: 210ms;
+    animation-delay: 160ms;
   }
   .nav-shell.is-open .primary-navigation > :nth-child(4) {
-    transition-delay: 270ms;
+    animation-delay: 220ms;
   }
 }
