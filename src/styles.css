@@ -1,4 +1,7 @@
-/* Shared tokens: change these to adjust the whole React site. */
+/* Shared tokens: change these to adjust the whole React site.
+   --line is for control boundaries (inputs, buttons) and needs 3:1 against its
+   background. --border is for decorative edges (cards, header, footer, dividers)
+   and is deliberately faint. They were one token and pulled in opposite directions. */
 :root {
   font-family:
     Inter,
@@ -7,15 +10,16 @@
     'Segoe UI',
     sans-serif;
   color-scheme: light;
-  --page: #f8f9fc;
+  --page: #fbf8fa;
   --surface: #ffffff;
-  --ink: #2a1838;
-  --muted: #50565e;
-  --accent: #7524cc;
-  --accent-hover: #8e59c7;
+  --ink: #2b2130;
+  --muted: #63596b;
+  --accent: #7a42b0;
+  --accent-hover: #632f96;
   --accent-ink: #ffffff;
-  --line: #2a1838;
-  --soft: #edf1fa;
+  --line: #7b7083;
+  --border: #e8dcec;
+  --soft: #f4ecf7;
   color: var(--ink);
   background: var(--page);
   font-synthesis: none;
@@ -25,15 +29,16 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --page: #201727;
-  --surface: #21122f;
-  --ink: #edf2fb;
-  --muted: #d7bafb;
-  --accent: #b36cff;
-  --accent-hover: #d1a3ff;
-  --accent-ink: #12203e;
-  --line: #ffffff;
-  --soft: #2c1f3d;
+  --page: #1d1722;
+  --surface: #251d2c;
+  --ink: #f0eaf3;
+  --muted: #b3a4bd;
+  --accent: #cfa8ee;
+  --accent-hover: #e3c7f6;
+  --accent-ink: #1d1722;
+  --line: #75687e;
+  --border: #372d40;
+  --soft: #2d2435;
 }
 
 * {
@@ -168,7 +173,7 @@ p {
   top: 0;
   z-index: 10;
   background: var(--page);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border);
 }
 .header-inner {
   min-height: 88px;
@@ -274,7 +279,7 @@ p {
   margin-top: 2rem;
 }
 .profile-note {
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--border);
   padding-left: 2rem;
 }
 .profile-note .eyebrow {
@@ -333,7 +338,7 @@ p {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
   background: var(--surface);
@@ -377,7 +382,7 @@ p {
   align-items: center;
   gap: 1rem;
   padding-top: 1.2rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
   margin-top: auto;
 }
 .project-actions a {
@@ -395,7 +400,7 @@ p {
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   padding-block: 4rem;
-  border-block: 1px solid var(--line);
+  border-block: 1px solid var(--border);
 }
 .approach-intro .eyebrow {
   margin-bottom: 1rem;
@@ -454,7 +459,7 @@ p {
   justify-content: space-between;
   gap: 2rem;
   padding-block: 3rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
 }
 .contact-section h2 {
   margin-top: 0.6rem;
@@ -472,7 +477,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
   padding-block: 1.8rem;
   font-size: 0.875rem;
 }
@@ -550,7 +555,7 @@ p {
   }
   .profile-note {
     border-left: 0;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--border);
     padding: 1.5rem 0 0;
   }
   .profile-note > .eyebrow,
@@ -844,7 +849,7 @@ p {
   aspect-ratio: 16 / 11;
   object-fit: cover;
   object-position: top center;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border);
   background: var(--soft);
 }
 .project-card.is-featured .project-description {

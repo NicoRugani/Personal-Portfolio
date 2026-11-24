@@ -56,8 +56,11 @@ will build, lint and deploy cleanly, then 404 for real visitors. This check must
 nothing:
 
 ```sh
-grep -rnE 'href="/[a-z]|href="/"' src/ index.html
+grep -rnE 'href="/[a-z]|href="/"' src/ index.html | grep -v 'rel="icon"'
 ```
+
+The `rel="icon"` line is excluded because Vite *does* rewrite asset `href`s on `<link>`
+tags. Only anchor hrefs are the hazard.
 
 **The 404 fallback.** GitHub Pages has no server-side rewrite, so a request for a route
 like `/work/planit` matches no file. A Vite plugin copies `dist/index.html` to
