@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router';
 import SiteHeader from './SiteHeader.jsx';
 import useScrollToTop from '../useScrollToTop.js';
+import useReveal from '../useReveal.js';
 import siteUrl from '../siteUrl.js';
 
 export default function SiteLayout() {
   useScrollToTop();
+  useReveal();
 
   return (
     <>
